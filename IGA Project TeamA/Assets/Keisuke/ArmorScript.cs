@@ -9,7 +9,7 @@ public class ArmorScript : MonoBehaviour {
         //Explosion only when you hit the specified object
         if (collision.gameObject.name == "Fallingobject")
         {
-
+            Destroy(this.gameObject);
             GameObject.Destroy(collision.gameObject);
         }
     }
