@@ -17,6 +17,6 @@ public class Bullet : MonoBehaviour {
     //オブジェクトが衝突したとき
     void OnCollisionEnter(Collision collisions)
     {
-        Destroy(this.gameObject);
+        if (collisions.gameObject.tag != "Player") Destroy(this.gameObject);
     }
 }
