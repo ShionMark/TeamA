@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-
     // bullet prefab
     public GameObject bullet;
     // 弾丸発射点
@@ -15,19 +14,21 @@ public class Shooting : MonoBehaviour
 
     IEnumerator Start()
     {
-            while (true)
-            {
-                // 弾丸の複製
-                GameObject bulletsmain = GameObject.Instantiate(bullet) as GameObject;
-                GameObject bulletssub = GameObject.Instantiate(bullet) as GameObject;
-                // Rigidbodyに力を加えて発射
-                bulletsmain.GetComponent<Rigidbody>().AddForce(Vector3.up * speed);
-                bulletssub.GetComponent<Rigidbody>().AddForce(Vector3.down * speed);
-                // 弾丸の位置を調整
-                bulletsmain.transform.position = muzzlemain.position;
-                bulletssub.transform.position = muzzlesub.position;
+        while (true)
+        {
+            // 弾丸の複製
+            GameObject bulletsmain = GameObject.Instantiate(bullet) as GameObject;
+            GameObject bulletssub = GameObject.Instantiate(bullet) as GameObject;
 
-                yield return new WaitForSeconds(0.3f);
+            // Rigidbodyに力を加えて発射
+            bulletsmain.GetComponent<Rigidbody>().AddForce(Vector3.up * speed);
+            bulletssub.GetComponent<Rigidbody>().AddForce(Vector3.down * speed);
+
+            // 弾丸の位置を調整
+            bulletsmain.transform.position = muzzlemain.position;
+            bulletssub.transform.position = muzzlesub.position;
+
+            yield return new WaitForSeconds(0.3f);
         }
     }
 
