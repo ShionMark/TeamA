@@ -16,9 +16,21 @@ namespace Itsuki
         // 弾丸の速度
         public float speed = 100;
 
-        IEnumerator Start()
+        int count;
+
+        private bool ShootFlag;
+
+
+        void Start()
         {
-            while (true)
+            count = 10;
+        }
+
+        void Update()
+        {
+            if (count != 10) count++;
+
+            if (Input.GetMouseButton(0) && count == 10)
             {
                 Vector3 subGotoPosition = enemyposi.transform.position - muzzlesub.transform.position;
                 Vector3 mainGotoPosition = enemyposi.transform.position - muzzlemain.transform.position;
@@ -35,17 +47,8 @@ namespace Itsuki
                 bulletsmain.transform.position = muzzlemain.position;
                 bulletssub.transform.position = muzzlesub.position;
 
-                yield return new WaitForSeconds(1f);
+                count = 0;
             }
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            //if (Input.GetKey(KeyCode.Z))
-            //{
-
-            //}
         }
     }
 }
