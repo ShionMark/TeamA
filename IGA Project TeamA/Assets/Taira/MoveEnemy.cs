@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MoveEnemy : MonoBehaviour {
 
-    public int RollSpeed = 20;
+    public int RollSpeed = 8;
     public int pattern = 1;
     public bool m_xPlus = true;  // x 軸プラス方向に移動中か？
     public float m_progress = 0f;      //  進捗 [0, 1)メビウス

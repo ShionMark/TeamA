@@ -24,6 +24,7 @@ public class SpawnPoint : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        
         StartCoroutine("SpawnDebris");
        
       
