@@ -4,59 +4,64 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Title : MonoBehaviour {
-
-    const int HelpStorage = 1100;
-    public Button PlayButton, HelpButton,CHelpButton,QuitButton;
-    public GameObject HelpScene;
-    int HelpMove;
-    bool Helpflg;
-
-    void Start()
+namespace Itsuki
+{
+    public class Title : MonoBehaviour
     {
-        HelpMove = HelpStorage;
-        Helpflg = false;
 
-        Button playbtn = PlayButton.GetComponent<Button>();
-        playbtn.onClick.AddListener(StartOnClick);
+        const int HelpStorage = 1100;
+        public Button PlayButton, HelpButton, CHelpButton, QuitButton;
+        public GameObject HelpScene;
+        int HelpMove;
+        bool Helpflg;
 
-        Button helpbtn = HelpButton.GetComponent<Button>();
-        helpbtn.onClick.AddListener(HelpOnClick);
+        void Start()
+        {
+            HelpMove = HelpStorage;
+            Helpflg = false;
 
-        Button chelpbtn = CHelpButton.GetComponent<Button>();
-        chelpbtn.onClick.AddListener(CHelpOnClick);
+            Button playbtn = PlayButton.GetComponent<Button>();
+            playbtn.onClick.AddListener(StartOnClick);
 
-        Button quitbtn = QuitButton.GetComponent<Button>();
-        quitbtn.onClick.AddListener(QuitOnClick);
-    }
-	
-	// Update is called once per frame
-	void Update () {
+            Button helpbtn = HelpButton.GetComponent<Button>();
+            helpbtn.onClick.AddListener(HelpOnClick);
 
-        HelpScene.transform.localPosition = new Vector3(HelpMove, transform.localScale.y, transform.localScale.z);
+            Button chelpbtn = CHelpButton.GetComponent<Button>();
+            chelpbtn.onClick.AddListener(CHelpOnClick);
 
-        if (Helpflg == true && HelpMove > 0) HelpMove -= 50;
-        if (Helpflg == false && HelpMove <= HelpStorage) HelpMove += 50;
+            Button quitbtn = QuitButton.GetComponent<Button>();
+            quitbtn.onClick.AddListener(QuitOnClick);
+        }
 
-	}
+        // Update is called once per frame
+        void Update()
+        {
 
-    void StartOnClick()
-    {
-        SceneManager.LoadScene("MainUIScene");
-    }
-    void HelpOnClick()
-    {
-        Helpflg = true;
-        Debug.Log("Help!!!");
-    }
-    void CHelpOnClick()
-    {
-        Helpflg = false;
-        Debug.Log("CloseHelp!!!");
-    }
-    void QuitOnClick()
-    {
-        Debug.Log("Quit!!!");
-        Application.Quit();
+            HelpScene.transform.localPosition = new Vector3(HelpMove, transform.localScale.y, transform.localScale.z);
+
+            if (Helpflg == true && HelpMove > 0) HelpMove -= 50;
+            if (Helpflg == false && HelpMove <= HelpStorage) HelpMove += 50;
+
+        }
+
+        void StartOnClick()
+        {
+            SceneManager.LoadScene("MainUIScene");
+        }
+        void HelpOnClick()
+        {
+            Helpflg = true;
+            Debug.Log("Help!!!");
+        }
+        void CHelpOnClick()
+        {
+            Helpflg = false;
+            Debug.Log("CloseHelp!!!");
+        }
+        void QuitOnClick()
+        {
+            Debug.Log("Quit!!!");
+            Application.Quit();
+        }
     }
 }

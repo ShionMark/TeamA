@@ -4,29 +4,33 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Pause : MonoBehaviour {
 
-    public Button PauseButton,PlayButton,TitleButton;
-    public GameObject OnPanel;
-    private bool pauseGame = false;
-
-    void Start()
+namespace Itsuki
+{
+    public class Pause : MonoBehaviour
     {
-        OnUnPause();
 
-        Button pausebtn = PauseButton.GetComponent<Button>();
-        pausebtn.onClick.AddListener(PauseOnClick);
+        public Button PauseButton, PlayButton, TitleButton;
+        public GameObject OnPanel;
+        private bool pauseGame = false;
 
-        Button playbtn = PlayButton.GetComponent<Button>();//スタート(ポーズ中）
-        playbtn.onClick.AddListener(PlayOnClick);
+        void Start()
+        {
+            OnUnPause();
 
-        Button titlebtn = TitleButton.GetComponent<Button>();//タイトル(ポーズ中)
-        titlebtn.onClick.AddListener(TitleOnClick);
-    }
+            Button pausebtn = PauseButton.GetComponent<Button>();
+            pausebtn.onClick.AddListener(PauseOnClick);
 
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))pauseGame = !pauseGame;
+            Button playbtn = PlayButton.GetComponent<Button>();//スタート(ポーズ中）
+            playbtn.onClick.AddListener(PlayOnClick);
+
+            Button titlebtn = TitleButton.GetComponent<Button>();//タイトル(ポーズ中)
+            titlebtn.onClick.AddListener(TitleOnClick);
+        }
+
+        public void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape)) pauseGame = !pauseGame;
 
             if (pauseGame == true)
             {
@@ -36,35 +40,36 @@ public class Pause : MonoBehaviour {
             {
                 OnUnPause();
             }
-    }
+        }
 
-    void PauseOnClick()
-    {
-        pauseGame = true;
-	}
+        void PauseOnClick()
+        {
+            pauseGame = true;
+        }
 
-    void PlayOnClick()
-    {
-        pauseGame = false;
-    }
+        void PlayOnClick()
+        {
+            pauseGame = false;
+        }
 
-    void TitleOnClick()
-    {
-        SceneManager.LoadScene("TitleScene");
-    }
+        void TitleOnClick()
+        {
+            SceneManager.LoadScene("TitleScene");
+        }
 
-    public void OnPause()
-    {
-        OnPanel.SetActive(true);        // PanelMenuをtrueにする
-        Time.timeScale = 0;
-        pauseGame = true;
-    }
+        public void OnPause()
+        {
+            OnPanel.SetActive(true);        // PanelMenuをtrueにする
+            Time.timeScale = 0;
+            pauseGame = true;
+        }
 
-    public void OnUnPause()
-    {
-        OnPanel.SetActive(false);       // PanelMenuをfalseにする
-        //PauseButton.SetActive(true);      // PAUSEボタンをtrueにする
-        Time.timeScale = 1;
-        pauseGame = false;
+        public void OnUnPause()
+        {
+            OnPanel.SetActive(false);       // PanelMenuをfalseにする
+            //PauseButton.SetActive(true);      // PAUSEボタンをtrueにする
+            Time.timeScale = 1;
+            pauseGame = false;
+        }
     }
 }
