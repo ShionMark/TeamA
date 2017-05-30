@@ -10,7 +10,7 @@ public class WeakpointScript : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         //Explosion only when you hit the specified object
-        if (collision.gameObject.name == "Bullet")
+        if (collision.gameObject.name == "Fallingobject")
         {
             if (Armor == null)
             {
