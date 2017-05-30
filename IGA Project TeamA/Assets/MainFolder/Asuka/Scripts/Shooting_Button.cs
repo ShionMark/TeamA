@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Itsuki
+namespace Itsukit
 {
     public class Shooting_Button : MonoBehaviour
     {
