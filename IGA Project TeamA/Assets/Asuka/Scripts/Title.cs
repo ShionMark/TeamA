@@ -8,6 +8,7 @@ namespace Itsuki
 {
     public class Title : MonoBehaviour
     {
+        public string text = "MainUIScene";
 
         const int HelpStorage = 1100;
         public Button PlayButton, HelpButton, CHelpButton, QuitButton;
@@ -46,7 +47,7 @@ namespace Itsuki
 
         void StartOnClick()
         {
-            SceneManager.LoadScene("MainUIScene");
+            SceneManager.LoadScene(text);
         }
         void HelpOnClick()
         {
