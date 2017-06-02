@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-namespace Itsuki
+namespace Asuka
 {
     public class FuelBar : MonoBehaviour
     {
 
-        const float GBARANIME = 0.05f;//回復の上昇アニメ
-        const float RBARANIME = 0.03f;//ダメージの赤ゲージアニメ
+        const float GBARANIME = 0.01f;//回復の上昇アニメ
+        const float RBARANIME = 0.005f;//ダメージの赤ゲージアニメ
         const float DAMAGE1 = 0.15f;//ダメージ
         const float RECOBAR1 = 0.30f;//回復量
 

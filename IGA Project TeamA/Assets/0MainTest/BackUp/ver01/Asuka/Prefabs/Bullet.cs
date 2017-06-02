@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Itsuki
+namespace Asuka
 {
     public class Bullet : MonoBehaviour
     {

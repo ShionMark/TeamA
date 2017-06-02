@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Itsuki
+namespace Asuka
 {
     public class Score : MonoBehaviour
     {
 
+        public static bool ScoreFlg = false; 
         Text ScoreText;
         Text HScoreText;
 
@@ -30,7 +31,11 @@ namespace Itsuki
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetMouseButtonDown(0)) score++;//マウスクリック時にポイント加算
+            if (ScoreFlg == true)
+            {
+                score++;//マウスクリック時にポイント加算
+                ScoreFlg = false;
+            }
             if (Input.GetKeyDown(KeyCode.Alpha0)) highScore = 0;//ハイスコアの初期化(0キー)
 
 

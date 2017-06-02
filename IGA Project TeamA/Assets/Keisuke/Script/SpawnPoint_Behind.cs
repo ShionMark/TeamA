@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using Move;
 
 namespace enemys
 {
@@ -31,6 +31,7 @@ namespace enemys
             if (EnemyGenerationFlg == true)
             {
                 i = Random.Range(0, enemyMAX);
+
                 enemy[i].SetActive(true);
 
                 for (int r = 0; r < 2; r++)
@@ -40,7 +41,7 @@ namespace enemys
                         weak[i, r].SetActive(true);
                     }
                 }
-
+                Move.MoveEnemy.patternFlg = true;
                 EnemyGenerationFlg = false;
             }
         }

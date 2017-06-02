@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Itsuki
+namespace Asuka
 {
     public class Shooting_Button : MonoBehaviour
     {

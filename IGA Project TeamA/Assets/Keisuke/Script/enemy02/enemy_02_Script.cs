@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using enemys;
-
+using Asuka;
 public class enemy_02_Script : MonoBehaviour
 {
 
@@ -36,6 +36,7 @@ public class enemy_02_Script : MonoBehaviour
             enemy_02_weakness_01.e2_Weak01HP = 25;
             enemy_02_weakness_02.e2_Weak02HP = 25;
             enemys.SpawnPoint_Behind.EnemyGenerationFlg = true;
+            Asuka.Score.ScoreFlg = true;
             enemys.SpawnPoint_Behind.enemy[0].SetActive(false);
         }
     }
