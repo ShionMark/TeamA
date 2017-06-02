@@ -1,0 +1,28 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Asuka
+{
+    public class Bullet : MonoBehaviour
+    {
+
+        // Use this for initialization
+        void Start()
+        {
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+
+        //オブジェクトが衝突したとき
+        void OnCollisionEnter(Collision collisions)
+        {
+            if (collisions.gameObject.tag != "Player") Destroy(this.gameObject);
+        }
+    }
+}
