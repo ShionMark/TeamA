@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-namespace Itsuki
+namespace Asuka
 {
     public class Title : MonoBehaviour
     {

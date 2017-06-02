@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
-namespace Itsuki
+namespace Asuka
 {
     public class FuelBar : MonoBehaviour
     {
@@ -31,6 +32,8 @@ namespace Itsuki
         void Update()
         {
             if (Gbar >= 0 && recove == false) Gbar -= 1 * Time.deltaTime / 40; //徐々に減らす
+
+            if (Gbar <= 0.0 && Rbar <= 0.0) SceneManager.LoadScene("GameOverScene");
 
             if (damage == true)
             {
@@ -73,6 +76,8 @@ namespace Itsuki
                 Recobar = (Gbar <= 1 - RECOBAR1) ? Gbar + RECOBAR1 : 1.0f;
                 recove = true;
             }
+
+
         }
     }
 }

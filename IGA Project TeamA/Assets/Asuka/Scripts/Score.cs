@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Asuka;
 
-namespace Itsuki
+namespace Asuka
 {
     public class Score : MonoBehaviour
     {
