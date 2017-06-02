@@ -20,9 +20,9 @@ public class player : MonoBehaviour {
         }
         if (Input.GetMouseButton(0)){
             this.endPos = Input.mousePosition;
-            if (this.endPos.x == 0){
-                this.startPos = Input.mousePosition;
-            }
+            //if (this.endPos.x == 0){
+            //    this.startPos = Input.mousePosition;
+            //}
             Calculation();
             if (this.tmpPos == this.endPos){
                 this.turn = 0;
