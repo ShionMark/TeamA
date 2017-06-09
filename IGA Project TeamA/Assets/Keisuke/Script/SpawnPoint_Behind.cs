@@ -11,11 +11,7 @@ namespace enemys
         public static GameObject[,] weak = new GameObject[enemyMAX,2];
         public static int i;
 
-        public static GameObject e2_Weak01;
-        public static GameObject e2_Weak02;
-        public static GameObject e3_Weak01;
-        public static GameObject e3_Weak02;
-
+        public AudioClip[] sound;
         
         public static bool EnemyGenerationFlg = true;
 
@@ -30,8 +26,8 @@ namespace enemys
         {
             if (EnemyGenerationFlg == true)
             {
-                i = Random.Range(0, enemyMAX);
 
+                i = Random.Range(0, enemyMAX);
                 enemy[i].SetActive(true);
 
                 for (int r = 0; r < 2; r++)

@@ -16,7 +16,7 @@ namespace Asuka
 
         public Image FuelBarGreen;
         public Image FuelBarRed;
-        float Gbar, Rbar, Recobar;
+        public static float Gbar, Rbar, Recobar;
         bool damage, recove;
 
         // Use this for initialization
@@ -30,7 +30,14 @@ namespace Asuka
         // Update is called once per frame
         void Update()
         {
-            if (Gbar >= 0 && recove == false) Gbar -= 1 * Time.deltaTime / 40; //徐々に減らす
+            if (Gbar >= 0 && recove == false)
+            {
+                Gbar -= 1 * Time.deltaTime / 40; //徐々に減らす
+            }
+            else
+            {
+                Gbar = 1;
+            }
 
             if (damage == true)
             {

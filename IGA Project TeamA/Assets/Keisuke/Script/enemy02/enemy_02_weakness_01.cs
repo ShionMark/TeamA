@@ -21,7 +21,7 @@ public class enemy_02_weakness_01 : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Fallingobject")
+        if (collision.gameObject.tag == "Bullet") 
         {
             GameObject.Destroy(collision.gameObject);
             e2_Weak01HP -= WeakDamage;

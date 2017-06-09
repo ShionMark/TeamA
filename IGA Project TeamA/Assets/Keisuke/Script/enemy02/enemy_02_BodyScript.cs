@@ -11,7 +11,7 @@ public class enemy_02_BodyScript : MonoBehaviour
     void Start()
     {
         e2_HP = 50;
-        Damage = 5;
+        Damage = 1;
     }
 
     void Update()
@@ -19,7 +19,7 @@ public class enemy_02_BodyScript : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Fallingobject")
+        if (collision.gameObject.tag == "Bullet") 
         {
             GameObject.Destroy(collision.gameObject);
             e2_HP -= Damage;

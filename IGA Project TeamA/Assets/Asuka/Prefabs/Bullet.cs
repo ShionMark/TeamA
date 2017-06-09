@@ -22,7 +22,8 @@ namespace Itsuki_ver1
         //オブジェクトが衝突したとき
         void OnCollisionEnter(Collision collisions)
         {
-            if (collisions.gameObject.tag != "Player") Destroy(this.gameObject);
+           if (collisions.gameObject.tag != "Player") 
+            Destroy(this.gameObject);
         }
     }
 }

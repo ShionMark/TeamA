@@ -33,11 +33,14 @@ namespace Asuka
         {
             if (ScoreFlg == true)
             {
-                score++;//マウスクリック時にポイント加算
+                score++;
                 ScoreFlg = false;
             }
-            if (Input.GetKeyDown(KeyCode.Alpha0)) highScore = 0;//ハイスコアの初期化(0キー)
-
+            //if (Input.GetKeyDown(KeyCode.Alpha0)) highScore = 0;//ハイスコアの初期化(0キー)
+            if (FuelBar.Gbar <= 0)
+            {
+                score = 0;
+            }
 
             ScoreText.text = "HighScore : " + highScore.ToString() + "\n        Score : " + score; //表示
 

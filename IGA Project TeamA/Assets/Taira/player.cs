@@ -51,7 +51,7 @@ public class player : MonoBehaviour {
         float tmpY = Mathf.Abs(this.startPos.y - this.endPos.y);
         if (this.turn > 0) this.turn += Mathf.Abs(tmpY) * 0.005f;
         if (this.turn < 0) this.turn += -(Mathf.Abs(tmpY) * 0.005f);
-        this.turn *= 0.01f;
+        this.turn *= 0.005f;
     }
    /*
     
