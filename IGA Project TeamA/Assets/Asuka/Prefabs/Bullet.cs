@@ -19,7 +19,7 @@ namespace Itsuki_ver1
 
         }
 
-        //オブジェクトが衝突したとき
+      //オブジェクトが衝突したとき
         void OnCollisionEnter(Collision collisions)
         {
            if (collisions.gameObject.tag != "Player") 

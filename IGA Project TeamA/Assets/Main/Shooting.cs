@@ -40,8 +40,7 @@ namespace Shooting
                 // 弾丸の複製
                 GameObject bulletsmain = GameObject.Instantiate(bullet) as GameObject;
                 GameObject bulletssub = GameObject.Instantiate(bullet) as GameObject;
-                
-                
+                   
 
                 // Rigidbodyに力を加えて発射
                 bulletsmain.GetComponent<Rigidbody>().AddForce(mainGotoPosition * speed);
