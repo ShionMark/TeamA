@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 namespace Asuka
@@ -16,7 +17,11 @@ namespace Asuka
 
         public Image FuelBarGreen;
         public Image FuelBarRed;
+<<<<<<< HEAD
         public static float Gbar, Rbar, Recobar;
+=======
+        float /*Gbar, Rbar,*/ Recobar;
+>>>>>>> origin/asuka
         bool damage, recove;
 
         // Use this for initialization
@@ -24,12 +29,13 @@ namespace Asuka
         {
             damage = false;
             recove = false;
-            Gbar = FuelBarGreen.transform.localScale.y;
+            //Gbar = FuelBarGreen.transform.localScale.y;
         }
 
         // Update is called once per frame
         void Update()
         {
+<<<<<<< HEAD
             if (Gbar >= 0 && recove == false)
             {
                 Gbar -= 1 * Time.deltaTime / 40; //徐々に減らす
@@ -38,25 +44,30 @@ namespace Asuka
             {
                 Gbar = 1;
             }
+=======
+            if (FuelBarGreen.fillAmount >= 0 && recove == false) FuelBarGreen.fillAmount -= 1.0f * Time.deltaTime / 40; //徐々に減らす
+
+            if (FuelBarGreen.fillAmount <= 0.0 && FuelBarRed.fillAmount <= 0.0) SceneManager.LoadScene("GameOverScene");
+>>>>>>> origin/asuka
 
             if (damage == true)
             {
-                if (Rbar >= Gbar)
+                if (FuelBarRed.fillAmount >= FuelBarGreen.fillAmount)
                 {
-                    Rbar -= RBARANIME;
+                    FuelBarRed.fillAmount -= RBARANIME;
                 }
                 else
                 {
-                    Rbar = Gbar;
+                    FuelBarRed.fillAmount = FuelBarGreen.fillAmount;
                     damage = false;
                 }
             }
 
             if (recove == true)
             {
-                if (Recobar >= Gbar && Gbar < 1)
+                if (Recobar >= FuelBarGreen.fillAmount && FuelBarGreen.fillAmount < 1)
                 {
-                    Gbar = (Gbar <= 0.95) ? Gbar + GBARANIME : 1;
+                    FuelBarGreen.fillAmount = (FuelBarGreen.fillAmount <= 0.95) ? FuelBarGreen.fillAmount + GBARANIME : 1;
                 }
                 else
                 {
@@ -64,22 +75,24 @@ namespace Asuka
                 }
             }
 
-            if (recove == false && damage == false) Rbar = Gbar;
+            if (recove == false && damage == false) FuelBarRed.fillAmount = FuelBarGreen.fillAmount;
 
-            FuelBarGreen.transform.localScale = new Vector3(transform.localScale.x, Gbar, transform.localScale.z);
-            FuelBarRed.transform.localScale = new Vector3(transform.localScale.x, Rbar, transform.localScale.z);
+            //FuelBarGreen.transform.localScale = new Vector3(transform.localScale.x, FuelBarGreen.fillAmount, transform.localScale.z);
+            //FuelBarRed.transform.localScale = new Vector3(transform.localScale.x, FuelBarRed.fillAmount, transform.localScale.z);
 
-            if (Input.GetKeyDown(KeyCode.Alpha1) && Gbar > 0)//ダメージ(1キー)
+            if (Input.GetKeyDown(KeyCode.Alpha1) && FuelBarGreen.fillAmount > 0)//ダメージ(1キー)
             {
-                Gbar = (Gbar >= DAMAGE1) ? Gbar -= DAMAGE1 : 0.0f;
+                FuelBarGreen.fillAmount = (FuelBarGreen.fillAmount >= DAMAGE1) ? FuelBarGreen.fillAmount -= DAMAGE1 : 0.0f;
                 damage = true;
             }
 
-            if (Input.GetKeyDown(KeyCode.Alpha2) && Gbar > 0 && Gbar <= 1)//回復(2キー)
+            if (Input.GetKeyDown(KeyCode.Alpha2) && FuelBarGreen.fillAmount > 0 && FuelBarGreen.fillAmount <= 1)//回復(2キー)
             {
-                Recobar = (Gbar <= 1 - RECOBAR1) ? Gbar + RECOBAR1 : 1.0f;
+                Recobar = (FuelBarGreen.fillAmount <= 1 - RECOBAR1) ? FuelBarGreen.fillAmount + RECOBAR1 : 1.0f;
                 recove = true;
             }
+
+
         }
     }
 }
