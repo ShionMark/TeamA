@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Asuka;
 
 namespace Asuka
 {
     public class Score : MonoBehaviour
     {
 
+        public static bool ScoreFlg = false; 
         Text ScoreText;
         Text HScoreText;
 
@@ -31,9 +31,16 @@ namespace Asuka
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetMouseButtonDown(0)) score++;//マウスクリック時にポイント加算
-            if (Input.GetKeyDown(KeyCode.Alpha0)) highScore = 0;//ハイスコアの初期化(0キー)
-
+            if (ScoreFlg == true)
+            {
+                score++;
+                ScoreFlg = false;
+            }
+            //if (Input.GetKeyDown(KeyCode.Alpha0)) highScore = 0;//ハイスコアの初期化(0キー)
+            if (FuelBar.Gbar <= 0)
+            {
+                score = 0;
+            }
 
             ScoreText.text = "HighScore : " + highScore.ToString() + "\n        Score : " + score; //表示
 

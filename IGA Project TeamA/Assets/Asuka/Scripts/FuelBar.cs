@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 
 namespace Asuka
@@ -10,14 +9,14 @@ namespace Asuka
     public class FuelBar : MonoBehaviour
     {
 
-        const float GBARANIME = 0.05f;//回復の上昇アニメ
-        const float RBARANIME = 0.03f;//ダメージの赤ゲージアニメ
+        const float GBARANIME = 0.01f;//回復の上昇アニメ
+        const float RBARANIME = 0.005f;//ダメージの赤ゲージアニメ
         const float DAMAGE1 = 0.15f;//ダメージ
         const float RECOBAR1 = 0.30f;//回復量
 
         public Image FuelBarGreen;
         public Image FuelBarRed;
-        float /*Gbar, Rbar,*/ Recobar;
+        public static float Gbar, Rbar, Recobar;
         bool damage, recove;
 
         // Use this for initialization
@@ -25,34 +24,39 @@ namespace Asuka
         {
             damage = false;
             recove = false;
-            //Gbar = FuelBarGreen.transform.localScale.y;
+            Gbar = FuelBarGreen.transform.localScale.y;
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (FuelBarGreen.fillAmount >= 0 && recove == false) FuelBarGreen.fillAmount -= 1.0f * Time.deltaTime / 40; //徐々に減らす
-
-            if (FuelBarGreen.fillAmount <= 0.0 && FuelBarRed.fillAmount <= 0.0) SceneManager.LoadScene("GameOverScene");
+            if (Gbar >= 0 && recove == false)
+            {
+                Gbar -= 1 * Time.deltaTime / 40; //徐々に減らす
+            }
+            else
+            {
+                Gbar = 1;
+            }
 
             if (damage == true)
             {
-                if (FuelBarRed.fillAmount >= FuelBarGreen.fillAmount)
+                if (Rbar >= Gbar)
                 {
-                    FuelBarRed.fillAmount -= RBARANIME;
+                    Rbar -= RBARANIME;
                 }
                 else
                 {
-                    FuelBarRed.fillAmount = FuelBarGreen.fillAmount;
+                    Rbar = Gbar;
                     damage = false;
                 }
             }
 
             if (recove == true)
             {
-                if (Recobar >= FuelBarGreen.fillAmount && FuelBarGreen.fillAmount < 1)
+                if (Recobar >= Gbar && Gbar < 1)
                 {
-                    FuelBarGreen.fillAmount = (FuelBarGreen.fillAmount <= 0.95) ? FuelBarGreen.fillAmount + GBARANIME : 1;
+                    Gbar = (Gbar <= 0.95) ? Gbar + GBARANIME : 1;
                 }
                 else
                 {
@@ -60,24 +64,22 @@ namespace Asuka
                 }
             }
 
-            if (recove == false && damage == false) FuelBarRed.fillAmount = FuelBarGreen.fillAmount;
+            if (recove == false && damage == false) Rbar = Gbar;
 
-            //FuelBarGreen.transform.localScale = new Vector3(transform.localScale.x, FuelBarGreen.fillAmount, transform.localScale.z);
-            //FuelBarRed.transform.localScale = new Vector3(transform.localScale.x, FuelBarRed.fillAmount, transform.localScale.z);
+            FuelBarGreen.transform.localScale = new Vector3(transform.localScale.x, Gbar, transform.localScale.z);
+            FuelBarRed.transform.localScale = new Vector3(transform.localScale.x, Rbar, transform.localScale.z);
 
-            if (Input.GetKeyDown(KeyCode.Alpha1) && FuelBarGreen.fillAmount > 0)//ダメージ(1キー)
+            if (Input.GetKeyDown(KeyCode.Alpha1) && Gbar > 0)//ダメージ(1キー)
             {
-                FuelBarGreen.fillAmount = (FuelBarGreen.fillAmount >= DAMAGE1) ? FuelBarGreen.fillAmount -= DAMAGE1 : 0.0f;
+                Gbar = (Gbar >= DAMAGE1) ? Gbar -= DAMAGE1 : 0.0f;
                 damage = true;
             }
 
-            if (Input.GetKeyDown(KeyCode.Alpha2) && FuelBarGreen.fillAmount > 0 && FuelBarGreen.fillAmount <= 1)//回復(2キー)
+            if (Input.GetKeyDown(KeyCode.Alpha2) && Gbar > 0 && Gbar <= 1)//回復(2キー)
             {
-                Recobar = (FuelBarGreen.fillAmount <= 1 - RECOBAR1) ? FuelBarGreen.fillAmount + RECOBAR1 : 1.0f;
+                Recobar = (Gbar <= 1 - RECOBAR1) ? Gbar + RECOBAR1 : 1.0f;
                 recove = true;
             }
-
-
         }
     }
 }

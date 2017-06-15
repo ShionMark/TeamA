@@ -9,6 +9,7 @@ namespace Asuka
 {
     public class Pause : MonoBehaviour
     {
+        public string text = "TitleScene";
 
         public Button PauseButton, PlayButton, TitleButton;
         public GameObject OnPanel;
@@ -54,7 +55,7 @@ namespace Asuka
 
         void TitleOnClick()
         {
-            SceneManager.LoadScene("TitleScene");
+            SceneManager.LoadScene(text);
         }
 
         public void OnPause()
