@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 using System.Collections;
 
 public class BoxScript : MonoBehaviour
 {
 
     private Vector3 m_pos;
+
     // Use this for initialization
     void Start()
     {
@@ -15,6 +17,11 @@ public class BoxScript : MonoBehaviour
     void Update()
     {
         transform.localPosition = m_pos;  // 形状位置を更新
-        m_pos.z += 100f;
+        m_pos.z -= 50f;
+
+        if (m_pos.z <= -750)
+        {
+            m_pos.z = 2300;
+        }
     }
 }
