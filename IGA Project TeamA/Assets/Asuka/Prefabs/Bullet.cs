@@ -2,21 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-    //オブジェクトが衝突したとき
-    void OnCollisionEnter(Collision collisions)
+namespace Itsuki
+{
+    public class Bullet : MonoBehaviour
     {
-        if (collisions.gameObject.tag != "Player") Destroy(this.gameObject);
+        //オブジェクトが衝突したとき
+        void OnCollisionEnter(Collision collisions)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

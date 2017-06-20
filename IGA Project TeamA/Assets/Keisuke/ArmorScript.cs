@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArmorScript : MonoBehaviour {
-
-    void OnCollisionEnter(Collision collision)
+namespace Itsuki
+{
+    public class ArmorScript : MonoBehaviour
     {
-        //Explosion only when you hit the specified object
-        if (collision.gameObject.name == "Bullet")
+
+        void OnCollisionEnter(Collision collision)
         {
-            Destroy(this.gameObject);
-            GameObject.Destroy(collision.gameObject);
+            //Explosion only when you hit the specified object
+            if (collision.gameObject.name == "Fallingobject")
+            {
+                Destroy(this.gameObject);
+                GameObject.Destroy(collision.gameObject);
+            }
         }
     }
 }

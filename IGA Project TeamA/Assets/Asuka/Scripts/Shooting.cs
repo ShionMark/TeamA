@@ -2,42 +2,53 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shooting : MonoBehaviour
+namespace Itsuki
 {
-    // bullet prefab
-    public GameObject bullet;
-    // 弾丸発射点
-    public Transform muzzlemain;
-    public Transform muzzlesub;
-    // 弾丸の速度
-    public float speed = 1000;
-
-    IEnumerator Start()
+    public class Shooting : MonoBehaviour
     {
-        while (true)
+        // bullet prefab
+        public GameObject bullet;
+        // 弾丸発射点
+        public Transform muzzlemain;
+        public Transform muzzlesub;
+
+        public Transform enemyposi;
+        // 弾丸の速度
+        public float speed = 100;
+
+        int count;
+
+        private bool ShootFlag;
+
+
+        void Start()
         {
-            // 弾丸の複製
-            GameObject bulletsmain = GameObject.Instantiate(bullet) as GameObject;
-            GameObject bulletssub = GameObject.Instantiate(bullet) as GameObject;
-
-            // Rigidbodyに力を加えて発射
-            bulletsmain.GetComponent<Rigidbody>().AddForce(Vector3.up * speed);
-            bulletssub.GetComponent<Rigidbody>().AddForce(Vector3.down * speed);
-
-            // 弾丸の位置を調整
-            bulletsmain.transform.position = muzzlemain.position;
-            bulletssub.transform.position = muzzlesub.position;
-
-            yield return new WaitForSeconds(0.3f);
+            count = 10;
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //if (Input.GetKey(KeyCode.Z))
-        //{
+        void Update()
+        {
+            if (count != 10) count++;
 
-        //}
+            if (Input.GetMouseButton(0) && count == 10)
+            {
+                Vector3 subGotoPosition = enemyposi.transform.position - muzzlesub.transform.position;
+                Vector3 mainGotoPosition = enemyposi.transform.position - muzzlemain.transform.position;
+
+                // 弾丸の複製
+                GameObject bulletsmain = GameObject.Instantiate(bullet) as GameObject;
+                GameObject bulletssub = GameObject.Instantiate(bullet) as GameObject;
+
+                // Rigidbodyに力を加えて発射
+                bulletsmain.GetComponent<Rigidbody>().AddForce(mainGotoPosition * speed);
+                bulletssub.GetComponent<Rigidbody>().AddForce(subGotoPosition * speed);
+
+                // 弾丸の位置を調整
+                bulletsmain.transform.position = muzzlemain.position;
+                bulletssub.transform.position = muzzlesub.position;
+
+                count = 0;
+            }
+        }
     }
 }
