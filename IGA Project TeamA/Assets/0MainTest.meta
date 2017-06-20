@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:IGA Project TeamA/Assets/0MainTest.meta
 guid: bc4c556ac328dc14daeee96e12deb36c
 folderAsset: yes
 timeCreated: 1495762084
+=======
+guid: 3603bad8da956d74fb6110ab1465dd40
+folderAsset: yes
+timeCreated: 1497589151
+>>>>>>> tomohiro:IGA Project TeamA/Assets/Assets/image_new/Game Over.meta
 licenseType: Free
 DefaultImporter:
   userData: 
