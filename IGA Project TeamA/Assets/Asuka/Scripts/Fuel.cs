@@ -12,7 +12,7 @@ public class Fuel : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Image GreenGage = transform.FindChild("GreenGage").GetComponent<Image>();
+        Image GreenGage = transform.Find("GreenGage").GetComponent<Image>();
         GreenGage.fillAmount *= fillProp;
 	}
 	

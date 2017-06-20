@@ -14,22 +14,22 @@ namespace Move
         public float c_progress = 0f;      //  進捗 [0, 1)十字
         public int m_ix = 0;               //  メビウスの輪インデックス
         public int c_ix = 0;               //  十字インデックス
-        Vector3[] m_data = {new Vector3( 0f,  0f,  0f),
-                        new Vector3( 2.5f,  2.5f,  0f),
-                        new Vector3(-2.5f,  2.5f,  0f),
+        Vector3[] m_data = {new Vector3( 0f,  7f,  0f),
+                        new Vector3( 3.5f,  3.5f,  0f),
+                        new Vector3(-3.5f,  3.5f,  0f),
                         new Vector3( 0f,  0f,  0f),
-                        new Vector3( 2.5f, -2.5f,  0f),
-                        new Vector3(-2.5f, -2.5f,  0f),
-                        new Vector3( 0f,  0f,  0f)};//メビウスの輪移動座標
+                        new Vector3( 3.5f, -3.5f,  0f),
+                        new Vector3(-3.5f, -3.5f,  0f),
+                        new Vector3( 0f,  7f,  0f)};//メビウスの輪移動座標
 
         Vector3[] c_data = {new Vector3( 0f,  0f,  0f),
-                        new Vector3( 0f,  2.5f,  0f),
+                        new Vector3( 0f,  3.0f,  0f),
                         new Vector3( 0f,  0f,  0f),
                         new Vector3( 0f, -2.5f,  0f),
                         new Vector3( 0f,  0f,  0f),
-                        new Vector3(-2.5f,  0f,  0f),
+                        new Vector3(-4.5f,  0f,  0f),
                         new Vector3( 0f,  0f,  0f),
-                        new Vector3( 2.5f,  0f,  0f),
+                        new Vector3( 4.5f,  0f,  0f),
                         new Vector3( 0f,  0f,  0f)};//十字移動座標
 
         void Start()
@@ -42,15 +42,15 @@ namespace Move
         {
            if (patternFlg == true)
             {
-                pattern = Random.Range(0, 5);
+                pattern = 4; //Random.Range(0, 5);
                 patternFlg = false;
             }
            transform.Rotate(new Vector3(0, 0, RollSpeed));
             switch (pattern)
             {
                 case 0://円移動
-                    var x = 2f * Mathf.Sin(Time.time * 2.5f);
-                    var y = 2f * Mathf.Cos(Time.time * 2.5f);
+                    var x = 5f * Mathf.Sin(Time.time * 3.0f);
+                    var y = 5f * Mathf.Cos(Time.time * 2.0f);
                     transform.position = new Vector3(x, y, 0f);
                     break;
 
@@ -59,7 +59,7 @@ namespace Move
                     if (m_progress >= 1.0f)
                     {
                         m_progress = 0f;
-                        if (++m_ix >= m_data.Length - 1)
+                        if (++m_ix >= m_data.Length - 1.0f)
                             m_ix = 0;
                     }
                     transform.position = Vector3.Lerp(m_data[m_ix], m_data[m_ix + 1], m_progress);
@@ -79,13 +79,13 @@ namespace Move
                 case 3://横往復
                     if (m_xPlus)
                     {
-                        transform.position += new Vector3(5f * Time.deltaTime, 0f, 0f);
-                        if (transform.position.x >= 2) m_xPlus = false;
+                        transform.position += new Vector3(10.0f * Time.deltaTime, 0f, 0f);
+                        if (transform.position.x >= 5) m_xPlus = false;
                     }
                     else
                     {
-                        transform.position -= new Vector3(5f * Time.deltaTime, 0f, 0f);
-                        if (transform.position.x <= -2) m_xPlus = true;
+                        transform.position -= new Vector3(10.0f * Time.deltaTime, 0f, 0f);
+                        if (transform.position.x <= -5) m_xPlus = true;
                     }
                     break;
 
@@ -95,7 +95,7 @@ namespace Move
                       if (m_yPlus)
                     {
                         transform.position += new Vector3(0f, 5f * Time.deltaTime, 0f);
-                        if (transform.position.y >= 5) m_yPlus = false;
+                        if (transform.position.y >= 8) m_yPlus = false;
                     }
                     else
                     {

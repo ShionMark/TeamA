@@ -10,18 +10,14 @@ namespace Asuka
     public class FuelBar : MonoBehaviour
     {
 
-        const float GBARANIME = 0.01f;//回復の上昇アニメ
-        const float RBARANIME = 0.005f;//ダメージの赤ゲージアニメ
+        const float GBARANIME = 0.05f;//回復の上昇アニメ
+        const float RBARANIME = 0.03f;//ダメージの赤ゲージアニメ
         const float DAMAGE1 = 0.15f;//ダメージ
         const float RECOBAR1 = 0.30f;//回復量
 
         public Image FuelBarGreen;
         public Image FuelBarRed;
-<<<<<<< HEAD
-        public static float Gbar, Rbar, Recobar;
-=======
         float /*Gbar, Rbar,*/ Recobar;
->>>>>>> origin/asuka
         bool damage, recove;
 
         // Use this for initialization
@@ -35,20 +31,9 @@ namespace Asuka
         // Update is called once per frame
         void Update()
         {
-<<<<<<< HEAD
-            if (Gbar >= 0 && recove == false)
-            {
-                Gbar -= 1 * Time.deltaTime / 40; //徐々に減らす
-            }
-            else
-            {
-                Gbar = 1;
-            }
-=======
             if (FuelBarGreen.fillAmount >= 0 && recove == false) FuelBarGreen.fillAmount -= 1.0f * Time.deltaTime / 40; //徐々に減らす
 
             if (FuelBarGreen.fillAmount <= 0.0 && FuelBarRed.fillAmount <= 0.0) SceneManager.LoadScene("GameOverScene");
->>>>>>> origin/asuka
 
             if (damage == true)
             {
