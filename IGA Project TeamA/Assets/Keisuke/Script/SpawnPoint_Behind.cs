@@ -13,18 +13,18 @@ namespace enemys
 
         public AudioClip[] sound;
         
-        public static bool EnemyGenerationFlg = true;
+        public static bool EnemyGenerationFlg;
 
         void Start()
         {
           //  enemy = new GameObject[enemyMAX];
-
+            EnemyGenerationFlg = true;
            
         }
 
         void Update()
         {
-            if (EnemyGenerationFlg == true)
+            if (EnemyGenerationFlg)
             {
 
                 i = Random.Range(0, enemyMAX);
