@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: bc5b66d9d1462724da22c2e12a95aeb1
+timeCreated: 1494745136
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - enemy_03_Weakness01: {fileID: 1304636992557966, guid: 7f53c0cd2bbc22a40a4ae6364a06a2bb,
+      type: 2}
+  - enemy_03_Weakness02: {fileID: 1439778672297508, guid: 7f53c0cd2bbc22a40a4ae6364a06a2bb,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

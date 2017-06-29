@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+<<<<<<< HEAD
 namespace Itsuki
+=======
+namespace Asuka
+>>>>>>> origin/master
 {
     public class Shooting : MonoBehaviour
     {
@@ -11,6 +15,7 @@ namespace Itsuki
         // 弾丸発射点
         public Transform muzzlemain;
         public Transform muzzlesub;
+<<<<<<< HEAD
 
         public Transform enemyposi;
         // 弾丸の速度
@@ -49,6 +54,38 @@ namespace Itsuki
 
                 count = 0;
             }
+=======
+        // 弾丸の速度
+        public float speed = 1000;
+
+        IEnumerator Start()
+        {
+            while (true)
+            {
+                // 弾丸の複製
+                GameObject bulletsmain = GameObject.Instantiate(bullet) as GameObject;
+                GameObject bulletssub = GameObject.Instantiate(bullet) as GameObject;
+
+                // Rigidbodyに力を加えて発射
+                bulletsmain.GetComponent<Rigidbody>().AddForce(Vector3.up * speed);
+                bulletssub.GetComponent<Rigidbody>().AddForce(Vector3.down * speed);
+
+                // 弾丸の位置を調整
+                bulletsmain.transform.position = muzzlemain.position;
+                bulletssub.transform.position = muzzlesub.position;
+
+                yield return new WaitForSeconds(0.3f);
+            }
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            //if (Input.GetKey(KeyCode.Z))
+            //{
+
+            //}
+>>>>>>> origin/master
         }
     }
 }

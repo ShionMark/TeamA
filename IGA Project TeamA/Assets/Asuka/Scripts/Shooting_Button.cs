@@ -2,7 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+<<<<<<< HEAD
 namespace Itsuki
+=======
+
+namespace Asuka
+>>>>>>> origin/master
 {
     public class Shooting_Button : MonoBehaviour
     {
