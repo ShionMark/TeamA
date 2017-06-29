@@ -42,7 +42,7 @@ namespace Move
         {
            if (patternFlg == true)
             {
-                pattern = 4; //Random.Range(0, 5);
+                pattern = Random.Range(0, 5);
                 patternFlg = false;
             }
            transform.Rotate(new Vector3(0, 0, RollSpeed));
@@ -94,12 +94,12 @@ namespace Move
 
                       if (m_yPlus)
                     {
-                        transform.position += new Vector3(0f, 5f * Time.deltaTime, 0f);
+                        transform.position += new Vector3(0f, 10f * Time.deltaTime, 0f);
                         if (transform.position.y >= 8) m_yPlus = false;
                     }
                     else
                     {
-                        transform.position -= new Vector3(0f, 5f * Time.deltaTime, 0f);
+                        transform.position -= new Vector3(0f, 10f * Time.deltaTime, 0f);
                         if (transform.position.y <= -5) m_yPlus = true;
                     }
                     break;

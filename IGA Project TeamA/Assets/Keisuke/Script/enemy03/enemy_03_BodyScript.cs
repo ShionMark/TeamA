@@ -5,14 +5,9 @@ using UnityEngine;
 public class enemy_03_BodyScript : MonoBehaviour 
 {
     
-    public static int e3_HP;
-    public static int Damage;
+    public static int e3_HP = 15;
+    public const int Damage = 1;
 
-    void Start()
-    {
-        e3_HP = 50;
-        Damage = 1;
-    }
 
     void Update()
     {

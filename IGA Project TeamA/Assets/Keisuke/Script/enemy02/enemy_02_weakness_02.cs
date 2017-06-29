@@ -11,7 +11,7 @@ public class enemy_02_weakness_02 : MonoBehaviour
     void Start()
     {
         enemys.SpawnPoint_Behind.weak[0,1] = this.gameObject;
-        e2_Weak02HP = 25;
+        e2_Weak02HP = 5;
         WeakDamage = enemy_02_BodyScript.Damage * 5;
     }
 

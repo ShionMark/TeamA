@@ -12,8 +12,8 @@ public class enemy_04_BodyScript : MonoBehaviour
     {
         enemys.SpawnPoint_Behind.weak[2, 0] = null;
         enemys.SpawnPoint_Behind.weak[2, 1] = null;
-        e4_HP = 50;
-        Damage = 1;
+        e4_HP = 15;
+        Damage = 5;
     }
 
     void Update()

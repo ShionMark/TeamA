@@ -10,7 +10,7 @@ public class enemy_02_BodyScript : MonoBehaviour
 
     void Start()
     {
-        e2_HP = 50;
+        e2_HP = 15;
         Damage = 1;
     }
 
