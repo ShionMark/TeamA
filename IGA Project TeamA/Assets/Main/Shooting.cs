@@ -39,6 +39,11 @@ namespace Shooting
             if (Input.GetMouseButtonDown(0))
             {
                 ChargeSound.PlayOneShot(ChargeSound.clip);
+                if (Time.timeScale == 0)
+                {
+                    ChargeSound.Stop();
+                }
+
                 PM.ChargeShot.CS = true;
             }
            /* if (Input.GetMouseButton(0))

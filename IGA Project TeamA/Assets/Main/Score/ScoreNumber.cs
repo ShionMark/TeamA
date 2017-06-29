@@ -23,14 +23,15 @@ namespace score
         // Use this for initialization
         void Start()
         {
-            ScoreNumber01[Num01].SetActive(true);
-            ScoreNumber02[Num02].SetActive(true);
-            ScoreNumber03[Num03].SetActive(true);
+           
         }
 
         // Update is called once per frame
         void Update()
         {
+            ScoreNumber01[Num01].SetActive(true);
+            ScoreNumber02[Num02].SetActive(true);
+            ScoreNumber03[Num03].SetActive(true);
             if (ScorePlusFlg)
             {
                 score++;

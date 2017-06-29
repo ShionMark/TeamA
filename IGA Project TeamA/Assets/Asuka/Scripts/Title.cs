@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TSound;
 
 namespace Asuka
 {
     public class Title : MonoBehaviour
     {
-        public string text = "MainUIScene";
+        public string text = "Main";
 
         const int HelpStorage = 1100;
         public Button PlayButton, HelpButton, CHelpButton, QuitButton;
@@ -47,6 +48,7 @@ namespace Asuka
 
         void StartOnClick()
         {
+            TSound.TitleSoundManager.SFlg = true;
             SceneManager.LoadScene(text);
         }
         void HelpOnClick()
@@ -61,7 +63,7 @@ namespace Asuka
         }
         void QuitOnClick()
         {
-            Debug.Log("Quit!!!");
+            TSound.TitleSoundManager.SFlg = true;
             Application.Quit();
         }
     }

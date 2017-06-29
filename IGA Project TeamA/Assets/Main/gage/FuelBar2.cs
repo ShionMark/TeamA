@@ -10,6 +10,8 @@ namespace Asuka
     public class FuelBar2 : MonoBehaviour
     {
 
+        public string text = "GameOverScene";
+
         public enum STATE_FUEL{ NORMAL, DAMAGE, RECOVER }
         public STATE_FUEL stateFuel;
 
@@ -17,10 +19,10 @@ namespace Asuka
         const float fDameANI = 0.08f;//ダメージの赤ゲージアニメ
         const float DAMAGE1 = 1.0f;//ダメージ
         const float RECOVER1 = 1.0f;//回復量
-        const float FUEL_DECRE = 1;//毎秒燃料を減らす大きさ（数が小さいほど早い）
+        const float FUEL_DECRE = 4;//毎秒燃料を減らす大きさ（数が小さいほど早い）
 
 
-        float a;
+        public static bool bRecoFlg;
         //public GameObject FuelBarGreen;
         public GameObject FuelBar;
         float fDamage, fRecobar, fNowBar;
@@ -29,6 +31,7 @@ namespace Asuka
         void Start()
         {
             fDEFAULT_SCALE = fNowBar = FuelBar.transform.localScale.x;
+            bRecoFlg = false;
         }
 
         // Update is called once per frame
@@ -44,7 +47,7 @@ namespace Asuka
                     }
                     else if (fNowBar <= 0)
                     {
-                        Debug.Log("ゲームオーバー");
+                        SceneManager.LoadScene(text);
                     }
                     break;
 
@@ -84,10 +87,11 @@ namespace Asuka
                 stateFuel = STATE_FUEL.DAMAGE;
             }
 
-            if (Input.GetKeyDown(KeyCode.Alpha2) && fNowBar > 0 && fNowBar <= fDEFAULT_SCALE)//回復(2キー)
+            if (bRecoFlg == true && fNowBar > 0 && fNowBar <= fDEFAULT_SCALE)//回復(2キー)
             {
                 fRecobar = (fNowBar <= fDEFAULT_SCALE - RECOVER1) ? fNowBar + RECOVER1 : fDEFAULT_SCALE;
                 stateFuel = STATE_FUEL.RECOVER;
+                bRecoFlg = false;
             }
         }
     }
