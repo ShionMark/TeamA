@@ -29,14 +29,15 @@ namespace highscore
             HNum01 = hscore % 10;
             HNum02 = hscore / 10 % 10;
             HNum03 = hscore / 100 % 10;
-            HighScoreNumber01[HNum01].SetActive(true);
-            HighScoreNumber02[HNum02].SetActive(true);
-            HighScoreNumber03[HNum03].SetActive(true);
+           
         }
 
         // Update is called once per frame
         void Update()
         {
+            HighScoreNumber01[HNum01].SetActive(true);
+            HighScoreNumber02[HNum02].SetActive(true);
+            HighScoreNumber03[HNum03].SetActive(true);
             if (score.ScoreNumber.score > hscore) 
             {
                 hscore = score.ScoreNumber.score;

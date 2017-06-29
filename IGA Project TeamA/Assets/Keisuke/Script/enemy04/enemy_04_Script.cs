@@ -5,6 +5,7 @@ using enemys;
 using PM;
 using Sound;
 using score;
+using Asuka;
 
 public class enemy_04_Script : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class enemy_04_Script : MonoBehaviour
         {
             enemy_04_BodyScript.e4_HP = 15;
 
-
+            Asuka.FuelBar2.bRecoFlg = true;
             score.ScoreNumber.ScorePlusFlg = true;
             enemys.SpawnPoint_Behind.enemy[2].SetActive(false);
             PM.Body.EB = true;

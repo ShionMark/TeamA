@@ -6,6 +6,7 @@ using StageMove;
 using PM;
 using Sound;
 using score;
+using Asuka;
 
 public class enemy_02_Script : MonoBehaviour
 {
@@ -42,6 +43,7 @@ public class enemy_02_Script : MonoBehaviour
         //エネミー02のHPがなくなったときの処理
         if (enemy_02_BodyScript.e2_HP <= 0)
         {
+            Asuka.FuelBar2.bRecoFlg = true;
             enemy_02_BodyScript.e2_HP = 15;
             enemy_02_weakness_01.e2_Weak01HP = 5;
             enemy_02_weakness_02.e2_Weak02HP = 5;
