@@ -4,22 +4,17 @@ using UnityEngine;
 
 public class enemy_03_BodyScript : MonoBehaviour 
 {
+    
+    public static int e3_HP = 15;
+    public const int Damage = 1;
 
-    public static int e3_HP;
-    public static int Damage;
-
-    void Start()
-    {
-        e3_HP = 50;
-        Damage = 5;
-    }
 
     void Update()
     {
     }
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Fallingobject")
+        if (collision.gameObject.tag == "Bullet") 
         {
             GameObject.Destroy(collision.gameObject);
             e3_HP -= Damage;

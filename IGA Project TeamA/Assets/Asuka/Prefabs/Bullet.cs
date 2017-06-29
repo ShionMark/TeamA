@@ -19,10 +19,15 @@ namespace Itsuki_ver1
 
         }
 
-        //オブジェクトが衝突したとき
+      //オブジェクトが衝突したとき
         void OnCollisionEnter(Collision collisions)
         {
-            if (collisions.gameObject.tag != "Player") Destroy(this.gameObject);
+            if (collisions.gameObject.tag != "Player" 
+                || this.gameObject.transform.position.x >= 100 
+                || this.gameObject.transform.position.x <= -100
+                || this.gameObject.transform.position.y >= 100
+                || this.gameObject.transform.position.y <= -100)
+            Destroy(this.gameObject);
         }
     }
 }

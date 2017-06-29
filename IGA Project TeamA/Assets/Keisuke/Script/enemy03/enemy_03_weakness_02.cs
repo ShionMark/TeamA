@@ -11,8 +11,10 @@ public class enemy_03_weakness_02 : MonoBehaviour
     void Start()
     {
         enemys.SpawnPoint_Behind.weak[1, 1] = this.gameObject;
-        e3_Weak02HP = 25;
+        e3_Weak02HP = 5;
+       
         WeakDamage = enemy_03_BodyScript.Damage * 5;
+      
     }
 
     void Update()
@@ -21,7 +23,7 @@ public class enemy_03_weakness_02 : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Fallingobject")
+        if (collision.gameObject.tag == "Bullet") 
         {
             GameObject.Destroy(collision.gameObject);
             e3_Weak02HP -= WeakDamage;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using Sound;
 
 namespace Asuka
 {
@@ -50,11 +50,13 @@ namespace Asuka
 
         void PlayOnClick()
         {
+            Sound.SoundSyastem.SoundOn = 0;
             pauseGame = false;
         }
 
         void TitleOnClick()
         {
+            Sound.SoundSyastem.SoundOn = 0;
             SceneManager.LoadScene(text);
         }
 
