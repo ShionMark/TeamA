@@ -8,10 +8,10 @@ namespace StageMove{
     public class BoxScript : MonoBehaviour
     {
 
-        const float modoru = -113;
-        const float mikire = 643;
-        const float mikire2 = -113;
-        const float modoru2 = 643;
+        const float modoru = -200;
+        const float mikire = 730;
+        const float mikire2 = -200;
+        const float modoru2 = 730;
         private Vector3 m_pos;
         public static bool ugoku = true;
         public int w = 0;

@@ -5,15 +5,15 @@ using UnityEngine;
 public class enemy_04_BodyScript : MonoBehaviour
 {
 
-    public static int e4_HP;
-    public static int Damage;
+    public static int e4_HP = 15;
+    public static int Damage = 5;
 
     void Start()
     {
         enemys.SpawnPoint_Behind.weak[2, 0] = null;
         enemys.SpawnPoint_Behind.weak[2, 1] = null;
-        e4_HP = 15;
-        Damage = 5;
+        //e4_HP = 15;
+        //Damage = 5;
     }
 
     void Update()
