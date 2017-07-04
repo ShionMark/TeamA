@@ -5,15 +5,15 @@ using enemys;
 
 public class enemy_03_weakness_02 : MonoBehaviour 
 {
-    public static int e3_Weak02HP;
-    private int WeakDamage;
+    public static int e3_Weak02HP = 5;
+    private const int WeakDamage = enemy_03_BodyScript.Damage * 5;
 
     void Start()
     {
         enemys.SpawnPoint_Behind.weak[1, 1] = this.gameObject;
-        e3_Weak02HP = 5;
+       // e3_Weak02HP = 5;
        
-        WeakDamage = enemy_03_BodyScript.Damage * 5;
+        //WeakDamage = enemy_03_BodyScript.Damage * 5;
       
     }
 
