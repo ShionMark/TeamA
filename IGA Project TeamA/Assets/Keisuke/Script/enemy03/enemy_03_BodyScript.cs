@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class enemy_03_BodyScript : MonoBehaviour 
 {
-    
-    public static int e3_HP = 15;
-    public const int Damage = 1;
 
+    public static int e3_HP = enemy_03_Script.ENEMY03_HP;
 
-    void Update()
-    {
-    }
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Bullet") 
+        GameObject.Destroy(collision.gameObject);
+        switch (collision.gameObject.tag)
         {
-            GameObject.Destroy(collision.gameObject);
-            e3_HP -= Damage;
+            case ("AutoBullet"):
+                e3_HP -= Shooting.Shooting_2.AUTO_BULLET;
+                break;
+            case ("Bullet"):
+                e3_HP -= Shooting.Shooting_2.CHARGE_BULLET;
+                break;
+
         }
     }
 }

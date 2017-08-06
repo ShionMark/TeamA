@@ -5,26 +5,26 @@ using UnityEngine;
 public class enemy_04_BodyScript : MonoBehaviour
 {
 
-    public static int e4_HP = 15;
-    public static int Damage = 5;
-
     void Start()
     {
         enemys.SpawnPoint_Behind.weak[2, 0] = null;
         enemys.SpawnPoint_Behind.weak[2, 1] = null;
-        //e4_HP = 15;
-        //Damage = 5;
     }
 
-    void Update()
-    {
-    }
+    public static int e4_HP = enemy_04_Script.ENEMY04_HP;
+
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Bullet") 
+        GameObject.Destroy(collision.gameObject);
+        switch (collision.gameObject.tag)
         {
-            GameObject.Destroy(collision.gameObject);
-            e4_HP -= Damage;
+            case ("AutoBullet"):
+                e4_HP -= Shooting.Shooting_2.AUTO_BULLET;
+                break;
+            case ("Bullet"):
+                e4_HP -= Shooting.Shooting_2.CHARGE_BULLET;
+                break;
+
         }
     }
 }

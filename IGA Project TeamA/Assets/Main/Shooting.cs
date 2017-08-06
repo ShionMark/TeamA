@@ -20,8 +20,6 @@ namespace Shooting
         // 弾丸の速度
         public float speed = 100;
 
-        int count;
-
         private bool ShootFlag;
 
         private AudioSource ChargeSound;
@@ -29,8 +27,7 @@ namespace Shooting
 
         void Start()
         {
-           ChargeSound = GetComponent<AudioSource>();
-            count = 0;
+            ChargeSound = GetComponent<AudioSource>();
         }
 
         void Update()
@@ -82,6 +79,7 @@ namespace Shooting
                    // count = 0;
                 }
             }
+
             if (Input.GetMouseButtonUp(1)) {
                 Vector3 subGotoPosition = enemyposi.transform.position - muzzlesub.transform.position;
                 Vector3 mainGotoPosition = enemyposi.transform.position - muzzlemain.transform.position;

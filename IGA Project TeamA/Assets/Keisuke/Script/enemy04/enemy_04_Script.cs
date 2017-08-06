@@ -9,12 +9,12 @@ using Asuka;
 
 public class enemy_04_Script : MonoBehaviour
 {
+    public const int ENEMY04_HP = 100;
 
     // Use this for initialization
     void Start()
     {
         enemys.SpawnPoint_Behind.enemy[2] = this.gameObject;
-
         enemys.SpawnPoint_Behind.enemy[2].SetActive(false);
 
     }
@@ -25,7 +25,7 @@ public class enemy_04_Script : MonoBehaviour
         //エネミー03のHPがなくなったときの処理
         if (enemy_04_BodyScript.e4_HP <= 0)
         {
-            enemy_04_BodyScript.e4_HP = 15;
+            enemy_04_BodyScript.e4_HP = ENEMY04_HP;
 
             Asuka.FuelBar2.bRecoFlg = true;
             score.ScoreNumber.ScorePlusFlg = true;

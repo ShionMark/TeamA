@@ -5,27 +5,29 @@ using enemys;
 
 public class enemy_02_weakness_01 : MonoBehaviour
 {
-    public static int e2_Weak01HP = 5;
-    private const int WeakDamage = enemy_02_BodyScript.Damage * 5;
+    public static int e2_Weak01HP;
 
     void Start()
     {
-        enemys.SpawnPoint_Behind.weak[0,0] = this.gameObject;
-       // e2_Weak01HP = 5;
-       // WeakDamage = enemy_02_BodyScript.Damage* 5;
-    }
-
-    void Update()
-    {
+        enemys.SpawnPoint_Behind.weak[0, 0] = this.gameObject;
+        e2_Weak01HP = enemy_02_Script.ENEMY02_WEAK01_HP;
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Bullet") 
+        GameObject.Destroy(collision.gameObject);
+
+        switch (collision.gameObject.tag)
         {
-            GameObject.Destroy(collision.gameObject);
-            e2_Weak01HP -= WeakDamage;
-            enemy_02_BodyScript.e2_HP -= WeakDamage;
+            case ("AutoBullet"):
+                e2_Weak01HP -= Shooting.Shooting_2.AUTO_BULLET * 5;
+                enemy_02_BodyScript.e2_HP -= Shooting.Shooting_2.AUTO_BULLET * 5;
+                break;
+            case ("Bullet"):
+                e2_Weak01HP -= Shooting.Shooting_2.CHARGE_BULLET * 5;
+                enemy_02_BodyScript.e2_HP -= Shooting.Shooting_2.CHARGE_BULLET * 5;
+                break;
+
         }
     }
 }

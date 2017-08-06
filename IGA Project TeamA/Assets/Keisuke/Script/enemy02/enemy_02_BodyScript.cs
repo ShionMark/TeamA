@@ -1,26 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Shooting;
 
 public class enemy_02_BodyScript : MonoBehaviour
 {
 
-    public static int e2_HP  = 15;
-    public const int Damage  = 1;
+    public static int e2_HP = enemy_02_Script.ENEMY02_HP;
 
-    void Start()
-    {
-    }
-
-    void Update()
-    {
-    }
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Bullet") 
+        GameObject.Destroy(collision.gameObject);
+        switch (collision.gameObject.tag)
         {
-            GameObject.Destroy(collision.gameObject);
-            e2_HP -= Damage;
+            case ("AutoBullet"):
+                e2_HP -= Shooting.Shooting_2.AUTO_BULLET;
+                break;
+            case ("Bullet"):
+                e2_HP -= Shooting.Shooting_2.CHARGE_BULLET;
+                break;
+
         }
     }
 }
