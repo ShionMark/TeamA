@@ -8,38 +8,47 @@ namespace Shooting
 {
     public class Shooting_2 : MonoBehaviour
     {
-        const float B_SPEED = 100;//弾丸の速度
-        const int COUNTMAX = 10;//撃つ間隔（オートショットモード）
+        public readonly float[] B_SPEED = new float[] { 100, 200,100,200 };//弾丸の速度
+        public readonly int[] COUNTMAX = new int[] { 20, 20, 30, 30};//撃つ間隔（オートショットモード）
 
-        public const int AUTO_BULLET = 1;
-        public const int CHARGE_BULLET = 7;
+        public static readonly int[] AUTO_BULLET = new int[] { 1, 2, 1, 2 };//オート弾の威力
+        public static readonly int[] CHARGE_BULLET = new int[] { 7, 12, 100, 100 };//チャージ弾の威力
 
-        public enum BULLET_TYPE {AUTO_SHOOT,CHARGE_SHOOT }
+        public enum BULLET_TYPE { AUTO_SHOOT, CHARGE_SHOOT }
         //public BULLET_TYPE bullet_type;
 
-        public GameObject bullet_auto, bullet_charge;
+        public GameObject bullet_auto, bullet_charge, razer_charge;
         public GameObject bulletsmain, bulletssub;
+
+        public static GameObject b_main, b_sub;
         // 弾丸発射点
-        public Transform muzzlemain,muzzlesub;
+        public Transform muzzlemain, muzzlesub;
         //撃つ方向
-        public Transform enemyposi;
-        // 弾丸の速度
-        
+        public Transform enemyposi,playerposi;
+
+        public static Transform posi;
+
+        Vector3 subGotoPosition, mainGotoPosition;
+
+
         private int icount;//弾丸の間隔のカウント
-        private bool isDoubleTapStart,isDoubleTap;//ダブルクリックのフラグ
+        private bool isDoubleTapStart, isDoubleTap;//ダブルクリックのフラグ
         private float fdoubleTapTime; //タップ開始からの累積時間
+        public static int iNowBulletLevel;
+        
 
         private AudioSource ChargeSound;
 
         void Start()
         {
             ChargeSound = GetComponent<AudioSource>();
+            iNowBulletLevel =
             icount = 0;
         }
 
         void Update()
         {
-            if (icount != COUNTMAX && PM.ChargeShot.CS == false) icount++;
+            if (icount != COUNTMAX[iNowBulletLevel] && PM.ChargeShot.CS == false) icount++;
             //------------------------------------------------------------------------------------------------
 
             //弾のエネルギー充填
@@ -47,7 +56,15 @@ namespace Shooting
             {
                 if (!PM.ChargeShot.cs.isPlaying)        //弾充填が終わっていれば発射可能
                 {
-                    Shoot(BULLET_TYPE.CHARGE_SHOOT);
+                    if (iNowBulletLevel < 2)
+                    {
+                        Shoot(BULLET_TYPE.CHARGE_SHOOT);
+                    }
+                    else
+                    {
+                        lazer();
+                    }
+                        
                     Sound.SoundSyastem.SoundOn = 3;     //効果音の番号
                     icount = -30;
                     isDoubleTap = false;
@@ -61,7 +78,7 @@ namespace Shooting
             }
             //------------------------------------------------------------------------------------------------
 
-            if (!isDoubleTap && icount == COUNTMAX)//オートショット
+            if (!isDoubleTap && icount == COUNTMAX[iNowBulletLevel])//オートショット
             {
                 Shoot(BULLET_TYPE.AUTO_SHOOT);
                 icount = 0;
@@ -95,8 +112,8 @@ namespace Shooting
 
         void Shoot(BULLET_TYPE bullet_type)
         {
-            Vector3 subGotoPosition = enemyposi.transform.position - muzzlesub.transform.position;
-            Vector3 mainGotoPosition = enemyposi.transform.position - muzzlemain.transform.position;
+            subGotoPosition = enemyposi.transform.position - muzzlesub.transform.position;
+            mainGotoPosition = enemyposi.transform.position - muzzlemain.transform.position;
 
             // 弾丸の複製
             switch (bullet_type)
@@ -113,10 +130,27 @@ namespace Shooting
             }
 
             // Rigidbodyに力を加えて発射
-            bulletsmain.GetComponent<Rigidbody>().AddForce(mainGotoPosition * B_SPEED);
-            bulletssub.GetComponent<Rigidbody>().AddForce(subGotoPosition * B_SPEED);
+            bulletsmain.GetComponent<Rigidbody>().AddForce(mainGotoPosition * B_SPEED[iNowBulletLevel]);
+            bulletssub.GetComponent<Rigidbody>().AddForce(subGotoPosition * B_SPEED[iNowBulletLevel]);
 
             // 弾丸の位置を調整
+            bulletsmain.transform.position = muzzlemain.position;
+            bulletssub.transform.position = muzzlesub.position;
+        }
+
+        void lazer()
+        {
+            posi = playerposi;
+            
+            subGotoPosition = muzzlesub.transform.position;
+            mainGotoPosition = muzzlemain.transform.position;
+
+            bulletsmain = GameObject.Instantiate(razer_charge) as GameObject;
+            bulletssub = GameObject.Instantiate(razer_charge) as GameObject;
+
+            b_main = bulletsmain;
+            b_sub = bulletssub;
+
             bulletsmain.transform.position = muzzlemain.position;
             bulletssub.transform.position = muzzlesub.position;
         }

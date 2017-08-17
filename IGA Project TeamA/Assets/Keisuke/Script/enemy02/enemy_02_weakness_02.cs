@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using enemys;
-
+using Shooting;
 public class enemy_02_weakness_02 : MonoBehaviour
 {
     public static int e2_Weak02HP;
@@ -23,12 +23,12 @@ public class enemy_02_weakness_02 : MonoBehaviour
         switch (collision.gameObject.tag)
         {
             case ("AutoBullet"):
-                e2_Weak02HP -= Shooting.Shooting_2.AUTO_BULLET * 5;
-                enemy_02_BodyScript.e2_HP -= Shooting.Shooting_2.AUTO_BULLET * 5;
+                e2_Weak02HP -= Shooting.Shooting_2.AUTO_BULLET[Shooting_2.iNowBulletLevel] * 5;
+                enemy_02_BodyScript.e2_HP -= Shooting.Shooting_2.AUTO_BULLET[Shooting_2.iNowBulletLevel] * 5;
                 break;
             case ("Bullet"):
-                e2_Weak02HP -= Shooting.Shooting_2.CHARGE_BULLET * 5;
-                enemy_02_BodyScript.e2_HP -= Shooting.Shooting_2.CHARGE_BULLET * 5;
+                e2_Weak02HP -= Shooting.Shooting_2.CHARGE_BULLET[Shooting_2.iNowBulletLevel] * 5;
+                enemy_02_BodyScript.e2_HP -= Shooting.Shooting_2.CHARGE_BULLET[Shooting_2.iNowBulletLevel] * 5;
                 break;
 
         }

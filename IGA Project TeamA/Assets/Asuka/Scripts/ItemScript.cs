@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ItemMgr;
 
 public class ItemScript : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class ItemScript : MonoBehaviour
         if (collisions.gameObject.tag == "Player")
         {
             Destroy(this.gameObject);
+            ItemManager.PickUpItems();
         }
     }
 

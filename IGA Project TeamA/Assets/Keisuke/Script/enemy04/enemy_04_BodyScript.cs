@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Shooting;
 
 public class enemy_04_BodyScript : MonoBehaviour
 {
@@ -19,10 +20,11 @@ public class enemy_04_BodyScript : MonoBehaviour
         switch (collision.gameObject.tag)
         {
             case ("AutoBullet"):
-                e4_HP -= Shooting.Shooting_2.AUTO_BULLET;
+                e4_HP -= Shooting.Shooting_2.AUTO_BULLET[Shooting_2.iNowBulletLevel];
                 break;
             case ("Bullet"):
-                e4_HP -= Shooting.Shooting_2.CHARGE_BULLET;
+                e4_HP -= Shooting.Shooting_2.CHARGE_BULLET[Shooting_2.iNowBulletLevel];
+                Debug.Log("180sx");
                 break;
 
         }

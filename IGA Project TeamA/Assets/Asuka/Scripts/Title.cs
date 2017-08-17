@@ -22,7 +22,6 @@ namespace Asuka
         {
             HelpMove = HelpStorage;
             Helpflg = false;
-
             Button playbtn = PlayButton.GetComponent<Button>();
             playbtn.onClick.AddListener(StartOnClick);
 
@@ -50,7 +49,6 @@ namespace Asuka
         void StartOnClick()
         {
             Debug.Log(Asuka.Score.score);
-            Asuka.Score.score = 0;
             Debug.Log(Asuka.Score.score);
             TSound.TitleSoundManager.SFlg = true;
             SceneManager.LoadScene(text);
