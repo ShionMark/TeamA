@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 3d1e7a520aa405e43949672338318d64
+timeCreated: 1499996943
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - bullet_auto: {fileID: 1319050046845478, guid: fa8cf8b72f64889439d5fb06eefd40be,
+      type: 2}
+  - bullet_charge: {fileID: 1642695402314780, guid: 8af7111b892e6cf41b32b0ec2ff01ef8,
+      type: 2}
+  - bulletsmain: {instanceID: 0}
+  - bulletssub: {instanceID: 0}
+  - muzzlemain: {instanceID: 0}
+  - muzzlesub: {instanceID: 0}
+  - enemyposi: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
