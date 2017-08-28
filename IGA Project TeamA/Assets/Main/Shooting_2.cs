@@ -8,10 +8,13 @@ namespace Shooting
 {
     public class Shooting_2 : MonoBehaviour
     {
-        public readonly float[] B_SPEED = new float[] { 100, 200,100,200 };//弾丸の速度
-        public readonly int[] COUNTMAX = new int[] { 20, 20, 30, 30};//撃つ間隔（オートショットモード）
+        const float LAZER_ERASE_TIME = 1;
+        const float LAZER_SPEED = 0.2f;
 
-        public static readonly int[] AUTO_BULLET = new int[] { 1, 2, 1, 2 };//オート弾の威力
+        public readonly float[] B_SPEED = new float[] { 100, 200, 100, 200 };//弾丸の速度
+        public readonly int[] COUNTMAX = new int[] { 20, 20, 30, 30 };//撃つ間隔（オートショットモード）
+
+        public static readonly int[] AUTO_BULLET = new int[] { 100, 100, 1, 2 };//オート弾の威力
         public static readonly int[] CHARGE_BULLET = new int[] { 7, 12, 100, 100 };//チャージ弾の威力
 
         public enum BULLET_TYPE { AUTO_SHOOT, CHARGE_SHOOT }
@@ -24,9 +27,11 @@ namespace Shooting
         // 弾丸発射点
         public Transform muzzlemain, muzzlesub;
         //撃つ方向
-        public Transform enemyposi,playerposi;
+        public Transform enemyposi, playerposi;
 
         public static Transform posi;
+
+        public static bool LazerFlg;
 
         Vector3 subGotoPosition, mainGotoPosition;
 
@@ -35,12 +40,13 @@ namespace Shooting
         private bool isDoubleTapStart, isDoubleTap;//ダブルクリックのフラグ
         private float fdoubleTapTime; //タップ開始からの累積時間
         public static int iNowBulletLevel;
-        
+
 
         private AudioSource ChargeSound;
 
         void Start()
         {
+            LazerFlg = false;
             ChargeSound = GetComponent<AudioSource>();
             iNowBulletLevel =
             icount = 0;
@@ -49,6 +55,12 @@ namespace Shooting
         void Update()
         {
             if (icount != COUNTMAX[iNowBulletLevel] && PM.ChargeShot.CS == false) icount++;
+
+            if (LazerFlg)
+            {
+                b_main.gameObject.transform.localScale -= new Vector3(0, LAZER_SPEED, 0);
+                b_sub.gameObject.transform.localScale += new Vector3(0, LAZER_SPEED, 0);
+            }
             //------------------------------------------------------------------------------------------------
 
             //弾のエネルギー充填
@@ -64,7 +76,7 @@ namespace Shooting
                     {
                         lazer();
                     }
-                        
+
                     Sound.SoundSyastem.SoundOn = 3;     //効果音の番号
                     icount = -30;
                     isDoubleTap = false;
@@ -141,7 +153,7 @@ namespace Shooting
         void lazer()
         {
             posi = playerposi;
-            
+
             subGotoPosition = muzzlesub.transform.position;
             mainGotoPosition = muzzlemain.transform.position;
 
@@ -153,6 +165,11 @@ namespace Shooting
 
             bulletsmain.transform.position = muzzlemain.position;
             bulletssub.transform.position = muzzlesub.position;
+
+            b_main.transform.localEulerAngles = Shooting_2.posi.transform.localEulerAngles;
+            b_sub.transform.localEulerAngles = Shooting_2.posi.transform.localEulerAngles;
+
+            LazerFlg = true;
         }
 
         void ChargeEfe()
