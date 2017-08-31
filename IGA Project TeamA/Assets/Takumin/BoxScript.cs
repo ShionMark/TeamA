@@ -4,7 +4,8 @@ using System.Collections;
 
 
 
-namespace StageMove{
+namespace StageMove
+{
     public class BoxScript : MonoBehaviour
     {
 
@@ -15,8 +16,8 @@ namespace StageMove{
         private Vector3 m_pos;
         public static bool ugoku = true;
         public int w = 0;
-       
-      
+
+
 
         // Use this for initialization
         void Start()
@@ -27,7 +28,7 @@ namespace StageMove{
         // Update is called once per frame
         void Update()
         {
-           
+
             transform.localPosition = m_pos;  // 形状位置を更新
             if (ugoku)
             {
@@ -38,17 +39,17 @@ namespace StageMove{
             }
             else
             {
-                  m_pos.z -= 1f;    //動くやつ(逆)
+                m_pos.z -= 1f;    //動くやつ(逆)
 
-                    if (m_pos.z < mikire2) m_pos.z = modoru2;  //僕には、まだ帰る場所があったんだ()
-                w+=1;
-                if (w >= 160)
-                {
+                if (m_pos.z < mikire2) m_pos.z = modoru2;  //僕には、まだ帰る場所があったんだ()
+                //w += 1;
+                //if (w >= 160)
+                //{
                     w = 0;
-                   ugoku = true;
-                  enemys.SpawnPoint_Behind.EnemyGenerationFlg = true;
-                    
-                }
+                    //ugoku = true;
+                    //enemys.SpawnPoint_Behind.EnemyGenerationFlg = true;
+
+                //}
             }
         }
     }

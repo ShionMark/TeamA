@@ -49,7 +49,6 @@ public class enemy_02_Script : MonoBehaviour
             enemy_02_weakness_02.e2_Weak02HP = ENEMY02_WEAK02_HP;
             score.ScoreNumber.ScorePlusFlg = true;
             enemys.SpawnPoint_Behind.enemy[0].SetActive(false);
-
             PM.Body.EB = true;
             Sound.SoundSyastem.SoundOn = 5;     //効果音の番号
             // PM.PlayerMove.PMP = true;
