@@ -8,28 +8,28 @@ using score;
 using Asuka;
 using StageMgr;
 
-public class enemy_boss_01_Script : MonoBehaviour
+public class enemy_boss_02_Script : MonoBehaviour
 {
-    public const int ENEMY_BOSS_01_HP = 1000;
+    public const int ENEMY_BOSS_02_HP = 1000;
 
     // Use this for initialization
     void Start()
     {
-        enemys.SpawnPoint_Behind.enemy[3] = this.gameObject;
-        enemys.SpawnPoint_Behind.enemy[3].SetActive(false);
+        enemys.SpawnPoint_Behind.enemy[4] = this.gameObject;
+        enemys.SpawnPoint_Behind.enemy[4].SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
         //エネミーボス01のHPがなくなったときの処理
-        if (enemy_boss_01_BodyScript.eb_1_HP <= 0)
+        if (enemy_boss_02_BodyScript.eb_2_HP <= 0)
         {
-            enemy_boss_01_BodyScript.eb_1_HP = ENEMY_BOSS_01_HP;
+            enemy_boss_02_BodyScript.eb_2_HP = ENEMY_BOSS_02_HP;
 
             Asuka.FuelBar2.bRecoFlg = true;
             score.ScoreNumber.ScorePlusFlg = true;
-            enemys.SpawnPoint_Behind.enemy[3].SetActive(false);
+            enemys.SpawnPoint_Behind.enemy[4].SetActive(false);
             PM.Body.EB = true;
             StageManager.IntervalType = StageManager.INTERVAL_TYPE.INTERVAL_CLEAR;
             Sound.SoundSyastem.SoundOn = 5;     //効果音の番号

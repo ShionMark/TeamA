@@ -31,7 +31,7 @@ namespace Shooting
 
         public static Transform posi;
 
-        public static bool LazerFlg;
+        public static bool LazerFlg, bPause;
 
         Vector3 subGotoPosition, mainGotoPosition;
 
@@ -54,72 +54,74 @@ namespace Shooting
 
         void Update()
         {
-            if (icount != COUNTMAX[iNowBulletLevel] && PM.ChargeShot.CS == false) icount++;
-
-            if (LazerFlg)
+            if (bPause == false)
             {
-                b_main.gameObject.transform.localScale -= new Vector3(0, LAZER_SPEED, 0);
-                b_sub.gameObject.transform.localScale += new Vector3(0, LAZER_SPEED, 0);
-            }
-            //------------------------------------------------------------------------------------------------
+                if (icount != COUNTMAX[iNowBulletLevel] && PM.ChargeShot.CS == false) icount++;
 
-            //弾のエネルギー充填
-            if (Input.GetMouseButtonUp(0) && isDoubleTap)
-            {
-                if (!PM.ChargeShot.cs.isPlaying)        //弾充填が終わっていれば発射可能
+                if (LazerFlg)
                 {
-                    if (iNowBulletLevel < 2)
+                    b_main.gameObject.transform.localScale -= new Vector3(0, LAZER_SPEED, 0);
+                    b_sub.gameObject.transform.localScale += new Vector3(0, LAZER_SPEED, 0);
+                }
+                //------------------------------------------------------------------------------------------------
+
+                //弾のエネルギー充填
+                if (Input.GetMouseButtonUp(0) && isDoubleTap)
+                {
+                    if (!PM.ChargeShot.cs.isPlaying)        //弾充填が終わっていれば発射可能
                     {
-                        Shoot(BULLET_TYPE.CHARGE_SHOOT);
+                        if (iNowBulletLevel < 2)
+                        {
+                            Shoot(BULLET_TYPE.CHARGE_SHOOT);
+                        }
+                        else
+                        {
+                            lazer();
+                        }
+
+                        Sound.SoundSyastem.SoundOn = 3;     //効果音の番号
+                        icount = -30;
+                        isDoubleTap = false;
                     }
                     else
                     {
-                        lazer();
+                        ChargeSound.Stop();
+                        PM.ChargeShot.cs.Stop();
+                        isDoubleTap = false;
                     }
-
-                    Sound.SoundSyastem.SoundOn = 3;     //効果音の番号
-                    icount = -30;
-                    isDoubleTap = false;
                 }
-                else
+                //------------------------------------------------------------------------------------------------
+
+                if (!isDoubleTap && icount == COUNTMAX[iNowBulletLevel])//オートショット
                 {
-                    ChargeSound.Stop();
-                    PM.ChargeShot.cs.Stop();
-                    isDoubleTap = false;
+                    Shoot(BULLET_TYPE.AUTO_SHOOT);
+                    icount = 0;
                 }
-            }
-            //------------------------------------------------------------------------------------------------
 
-            if (!isDoubleTap && icount == COUNTMAX[iNowBulletLevel])//オートショット
-            {
-                Shoot(BULLET_TYPE.AUTO_SHOOT);
-                icount = 0;
-            }
-
-            if (isDoubleTapStart)
-            {
-                fdoubleTapTime += Time.deltaTime;
-                if (fdoubleTapTime < 0.2f)
+                if (isDoubleTapStart)
                 {
-                    if (Input.GetMouseButtonDown(0))
+                    fdoubleTapTime += Time.deltaTime;
+                    if (fdoubleTapTime < 0.2f)
+                    {
+                        if (Input.GetMouseButtonDown(0))
+                        {
+                            isDoubleTapStart = false;
+                            isDoubleTap = true;
+                            fdoubleTapTime = 0.0f;
+                            ChargeEfe();
+                        }
+                    }
+                    else
                     {
                         isDoubleTapStart = false;
-                        isDoubleTap = true;
                         fdoubleTapTime = 0.0f;
-                        ChargeEfe();
                     }
                 }
                 else
                 {
-                    isDoubleTapStart = false;
-                    fdoubleTapTime = 0.0f;
+                    if (Input.GetMouseButtonDown(0)) isDoubleTapStart = true;
                 }
             }
-            else
-            {
-                if (Input.GetMouseButtonDown(0)) isDoubleTapStart = true;
-            }
-
         }
 
         void Shoot(BULLET_TYPE bullet_type)

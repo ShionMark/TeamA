@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Move;
+using StageMgr;
 
 namespace enemys
 {
     public class SpawnPoint_Behind : MonoBehaviour
     {
-        private static int enemyMAX = 4;
+        private static int enemyMAX = 8;
         public static GameObject[] enemy = new GameObject[enemyMAX];
         public static GameObject[,] weak = new GameObject[enemyMAX, 2];
         public static int i;
@@ -27,17 +28,16 @@ namespace enemys
         {
             if (EnemyGenerationFlg)
             {
-                if (++SpawnEnemyCount <= 2)
+                if (++SpawnEnemyCount <= 5)
                 {
-                    i = Random.Range(0, enemyMAX-1);
-                    enemy[i].SetActive(true);
+                    i = Random.Range(0, enemyMAX - 5);
                 }
                 else
                 {
-                    i = 3;
+                    i = enemyMAX - 5 + StageManager.iNowStage;
                 }
 
-               
+                enemy[i].SetActive(true);
 
                 for (int r = 0; r < 2; r++)
                 {
