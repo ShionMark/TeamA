@@ -28,7 +28,7 @@ namespace enemys
         {
             if (EnemyGenerationFlg)
             {
-                if (++SpawnEnemyCount <= 5)
+                if (++SpawnEnemyCount <= 1)
                 {
                     i = Random.Range(0, enemyMAX - 5);
                 }

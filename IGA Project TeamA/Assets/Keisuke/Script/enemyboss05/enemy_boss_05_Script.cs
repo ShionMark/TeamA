@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using enemys;
 using PM;
 using Sound;
@@ -32,7 +33,7 @@ public class enemy_boss_05_Script : MonoBehaviour
             enemys.SpawnPoint_Behind.enemy[7].SetActive(false);
             PM.Body.EB = true;
             //StageManager.IntervalType = StageManager.INTERVAL_TYPE.INTERVAL_CLEAR;
-            Debug.Log("END");
+            SceneManager.LoadScene("GameClearScene");
             Sound.SoundSyastem.SoundOn = 5;     //効果音の番号
             // PM.PlayerMove.PMP = true;
             //enemys.SpawnPoint_Behind.EnemyGenerationFlg = true;  //敵沸処理
