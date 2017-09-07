@@ -20,10 +20,10 @@ public class enemy_04_BodyScript : MonoBehaviour
         switch (collision.gameObject.tag)
         {
             case ("AutoBullet"):
-                e4_HP -= Shooting.Shooting_2.AUTO_BULLET[Shooting_2.iNowBulletLevel];
+                e4_HP -= Shooting.Shooting_2.AUTO_BULLET[Shooting_2.iNowChar, Shooting_2.iNowBulletLevel];
                 break;
             case ("Bullet"):
-                e4_HP -= Shooting.Shooting_2.CHARGE_BULLET[Shooting_2.iNowBulletLevel];
+                e4_HP -= Shooting.Shooting_2.CHARGE_BULLET[Shooting_2.iNowChar, Shooting_2.iNowBulletLevel];
                 Debug.Log("180sx");
                 break;
 

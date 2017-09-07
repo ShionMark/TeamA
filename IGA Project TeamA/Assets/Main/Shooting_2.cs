@@ -11,11 +11,29 @@ namespace Shooting
         const float LAZER_ERASE_TIME = 1;
         const float LAZER_SPEED = 0.2f;
 
-        public readonly float[] B_SPEED = new float[] { 100, 200, 100, 200 };//弾丸の速度
-        public readonly int[] COUNTMAX = new int[] { 20, 20, 30, 30 };//撃つ間隔（オートショットモード）
+        //弾丸の速度                                      Lv1  Lv2  Lv3  Lv4
+        public readonly int[,] B_SPEED = new int[4, 4] {{ 100, 200, 100, 200 },        //バランス
+                                                        { 100, 200, 100, 200 },        //パワー
+                                                        { 100, 200, 100, 200 },        //スピード
+                                                        { 100, 200, 100, 200 }};      //耐久
 
-        public static readonly int[] AUTO_BULLET = new int[] { 100, 100, 1, 2 };//オート弾の威力
-        public static readonly int[] CHARGE_BULLET = new int[] { 7, 12, 100, 100 };//チャージ弾の威力
+        //撃つ間隔（オートショットモード)                  Lv1 Lv2 Lv3 Lv4
+        public readonly int[,] COUNTMAX = new int[4, 4] {{ 20, 20, 30, 30},    //バランス
+                                                         { 20, 20, 30, 30},    //パワー
+                                                         { 20, 20, 30, 30},    //スピード
+                                                         { 20, 20, 30, 30}};   //耐久
+
+        //オート弾の威力                                             Lv1 Lv2 Lv3 Lv4
+        public static readonly int[,] AUTO_BULLET = new int[4, 4] {{ 100, 100, 1, 2},      //バランス
+                                                                   { 100, 100, 1, 2},      //パワー
+                                                                   { 100, 100, 1, 2},      //スピード
+                                                                   { 100, 100, 1, 2}};     //耐久
+
+        //チャージ弾の威力                                            Lv1 Lv2 Lv3  Lv4
+        public static readonly int[,] CHARGE_BULLET = new int[4, 4] {{ 7, 12, 100, 100},        //バランス
+                                                                     { 7, 12, 100, 100},        //パワー
+                                                                     { 7, 12, 100, 100},        //スピード
+                                                                     { 7, 12, 100, 100}};       //耐久
 
         public enum BULLET_TYPE { AUTO_SHOOT, CHARGE_SHOOT }
         //public BULLET_TYPE bullet_type;
@@ -39,7 +57,7 @@ namespace Shooting
         private int icount;//弾丸の間隔のカウント
         private bool isDoubleTapStart, isDoubleTap;//ダブルクリックのフラグ
         private float fdoubleTapTime; //タップ開始からの累積時間
-        public static int iNowBulletLevel;
+        public static int iNowChar, iNowBulletLevel;
 
 
         private AudioSource ChargeSound;
@@ -49,6 +67,7 @@ namespace Shooting
             LazerFlg = false;
             ChargeSound = GetComponent<AudioSource>();
             iNowBulletLevel =
+            iNowChar =
             icount = 0;
         }
 
@@ -56,7 +75,7 @@ namespace Shooting
         {
             if (bPause == false)
             {
-                if (icount != COUNTMAX[iNowBulletLevel] && PM.ChargeShot.CS == false) icount++;
+                if (icount != COUNTMAX[iNowChar, iNowBulletLevel] && PM.ChargeShot.CS == false) icount++;
 
                 if (LazerFlg)
                 {
@@ -92,7 +111,7 @@ namespace Shooting
                 }
                 //------------------------------------------------------------------------------------------------
 
-                if (!isDoubleTap && icount == COUNTMAX[iNowBulletLevel])//オートショット
+                if (!isDoubleTap && icount == COUNTMAX[Shooting_2.iNowChar, iNowBulletLevel])//オートショット
                 {
                     Shoot(BULLET_TYPE.AUTO_SHOOT);
                     icount = 0;
@@ -144,8 +163,8 @@ namespace Shooting
             }
 
             // Rigidbodyに力を加えて発射
-            bulletsmain.GetComponent<Rigidbody>().AddForce(mainGotoPosition * B_SPEED[iNowBulletLevel]);
-            bulletssub.GetComponent<Rigidbody>().AddForce(subGotoPosition * B_SPEED[iNowBulletLevel]);
+            bulletsmain.GetComponent<Rigidbody>().AddForce(mainGotoPosition * B_SPEED[iNowChar, iNowBulletLevel]);
+            bulletssub.GetComponent<Rigidbody>().AddForce(subGotoPosition * B_SPEED[iNowChar, iNowBulletLevel]);
 
             // 弾丸の位置を調整
             bulletsmain.transform.position = muzzlemain.position;

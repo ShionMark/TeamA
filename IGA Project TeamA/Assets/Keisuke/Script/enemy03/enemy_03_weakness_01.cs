@@ -21,12 +21,12 @@ public class enemy_03_weakness_01 : MonoBehaviour
         switch (collision.gameObject.tag)
         {
             case ("AutoBullet"):
-                e3_Weak01HP -= Shooting.Shooting_2.AUTO_BULLET[Shooting_2.iNowBulletLevel] * 5;
-                enemy_03_BodyScript.e3_HP -= Shooting.Shooting_2.AUTO_BULLET[Shooting_2.iNowBulletLevel] * 5;
+                e3_Weak01HP -= Shooting.Shooting_2.AUTO_BULLET[Shooting_2.iNowChar, Shooting_2.iNowBulletLevel] * 5;
+                enemy_03_BodyScript.e3_HP -= Shooting.Shooting_2.AUTO_BULLET[Shooting_2.iNowChar, Shooting_2.iNowBulletLevel] * 5;
                 break;
             case ("Bullet"):
-                e3_Weak01HP -= Shooting.Shooting_2.CHARGE_BULLET[Shooting_2.iNowBulletLevel] * 5;
-                enemy_03_BodyScript.e3_HP -= Shooting.Shooting_2.CHARGE_BULLET[Shooting_2.iNowBulletLevel] * 5;
+                e3_Weak01HP -= Shooting.Shooting_2.CHARGE_BULLET[Shooting_2.iNowChar, Shooting_2.iNowBulletLevel] * 5;
+                enemy_03_BodyScript.e3_HP -= Shooting.Shooting_2.CHARGE_BULLET[Shooting_2.iNowChar, Shooting_2.iNowBulletLevel] * 5;
                 break;
 
         }
