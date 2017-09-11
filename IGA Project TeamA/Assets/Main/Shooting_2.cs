@@ -15,7 +15,7 @@ namespace Shooting
         public readonly int[,] B_SPEED = new int[4, 4] {{ 100, 200, 100, 200 },        //バランス
                                                         { 100, 200, 100, 200 },        //パワー
                                                         { 100, 200, 100, 200 },        //スピード
-                                                        { 100, 200, 100, 200 }};      //耐久
+                                                        { 100, 200, 100, 200 }};       //耐久
 
         //撃つ間隔（オートショットモード)                  Lv1 Lv2 Lv3 Lv4
         public readonly int[,] COUNTMAX = new int[4, 4] {{ 20, 20, 30, 30},    //バランス
