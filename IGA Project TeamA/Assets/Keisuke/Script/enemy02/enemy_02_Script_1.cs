@@ -7,6 +7,7 @@ using PM;
 using Sound;
 using score;
 using Asuka;
+using StageMgr;
 
 
 public class enemy_02_Script_1 : MonoBehaviour
@@ -52,6 +53,7 @@ public class enemy_02_Script_1 : MonoBehaviour
             score.ScoreNumber.ScorePlusFlg = true;
             enemys.SpawnPoint_Behind.enemy[0].SetActive(false);
             PM.Body.EB = true;
+            StageManager.bCreateEnemyFlg = true;
             Sound.SoundSyastem.SoundOn = 5;     //効果音の番号
             // PM.PlayerMove.PMP = true;
             // enemys.SpawnPoint_Behind.EnemyGenerationFlg = true;

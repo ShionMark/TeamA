@@ -1,16 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Shooting;
 
 public class playerMove : MonoBehaviour {
+
+    const int PLAYER_MAX = 4;
 
     float turn = 0;
     Vector2 startPos;
     Vector2 endPos;
     Vector2 tmpPos;
-    
+
+    public GameObject[] iNowMMachine;
+    public GameObject[] iNowSMachine;
 
     void Start(){
-        
+        iNowMMachine[Shooting_2.iNowChar].SetActive(true);  //今の自機を映す
+        iNowSMachine[Shooting_2.iNowChar].SetActive(true);  //今の子機を映す
+
+        for (int i = 0; i <= PLAYER_MAX - 1; i++)//それ以外の自機と子機を消す
+        {
+            if (i != Shooting_2.iNowChar)
+            {
+                iNowMMachine[i].SetActive(false);
+                iNowSMachine[i].SetActive(false);
+            }
+        }
     }
 
     void Update(){
