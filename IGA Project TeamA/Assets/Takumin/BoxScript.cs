@@ -1,56 +1,47 @@
-﻿using UnityEngine;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Collections;
-
-
+using UnityEngine;
+using StageMove2;
 
 namespace StageMove
 {
     public class BoxScript : MonoBehaviour
     {
+        public static readonly int BG_POSI = 630;
+        public static readonly int BG_SPEED = 1;  
 
-        const float modoru = -200;
-        const float mikire = 730;
-        const float mikire2 = -200;
-        const float modoru2 = 730;
-        private Vector3 m_pos;
-        public static bool ugoku = true;
-        public int w = 0;
-
-
+	 public static Vector3 R1Pos;
+     public static bool ugoku;
 
         // Use this for initialization
         void Start()
         {
-            m_pos = transform.localPosition;  // 形状位置を保持
+            R1Pos = this.transform.localPosition;
         }
 
         // Update is called once per frame
         void Update()
         {
+                this.transform.localPosition = R1Pos;  // 形状位置を更新
 
-            transform.localPosition = m_pos;  // 形状位置を更新
-            if (ugoku)
-            {
-                m_pos.z += 1f;    //動くやつ
+                if (ugoku)
+                {
+                    if (R1Pos.z > BG_POSI)
+                    {
+                        R1Pos.z = BoxScript2.R2Pos.z - BG_POSI;
+                    }
 
-                if (m_pos.z >= mikire) m_pos.z = modoru;  //僕には、まだ帰る場所があったんだ
-                w = 0;
-            }
-            else
-            {
-                m_pos.z -= 1f;    //動くやつ(逆)
+                    R1Pos.z += BG_SPEED;
+                }
+                else
+                {
+                    if (R1Pos.z < -BG_POSI)
+                    {
+                        R1Pos.z = BoxScript2.R2Pos.z + BG_POSI;
+                    }
 
-                if (m_pos.z < mikire2) m_pos.z = modoru2;  //僕には、まだ帰る場所があったんだ()
-                //w += 1;
-                //if (w >= 160)
-                //{
-                    w = 0;
-                    //ugoku = true;
-                    //enemys.SpawnPoint_Behind.EnemyGenerationFlg = true;
-
-                //}
-            }
+                    R1Pos.z -= BG_SPEED;
+                }
         }
     }
 }

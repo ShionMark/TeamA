@@ -13,27 +13,27 @@ namespace Shooting
 
         //弾丸の速度                                      Lv1  Lv2  Lv3  Lv4
         public readonly int[,] B_SPEED = new int[4, 4] {{ 100, 200, 100, 200 },        //バランス
-                                                        { 100, 200, 100, 200 },        //パワー
-                                                        { 100, 200, 100, 200 },        //スピード
-                                                        { 100, 200, 100, 200 }};       //耐久
+                                                        {  80, 120,  80, 120 },        //パワー
+                                                        { 140, 240, 140, 240 },        //スピード
+                                                        {  60, 100,  60, 100 }};       //耐久
 
         //撃つ間隔（オートショットモード)                  Lv1 Lv2 Lv3 Lv4
-        public readonly int[,] COUNTMAX = new int[4, 4] {{ 20, 20, 30, 30},    //バランス
-                                                         { 20, 20, 30, 30},    //パワー
-                                                         { 20, 20, 30, 30},    //スピード
+        public readonly int[,] COUNTMAX = new int[4, 4] {{ 30, 30, 20, 20},    //バランス
+                                                         { 40, 40, 30, 30},    //パワー
+                                                         { 15, 15, 10, 10},    //スピード
                                                          { 20, 20, 30, 30}};   //耐久
 
         //オート弾の威力                                             Lv1 Lv2 Lv3 Lv4
-        public static readonly int[,] AUTO_BULLET = new int[4, 4] {{ 100, 100, 1, 2},      //バランス
-                                                                   { 100, 100, 1, 2},      //パワー
-                                                                   { 100, 100, 1, 2},      //スピード
-                                                                   { 100, 100, 1, 2}};     //耐久
+        public static readonly int[,] AUTO_BULLET = new int[4, 4] {{  3,  6,  3,  6},      //バランス
+                                                                   {  6, 12,  6, 12},      //パワー
+                                                                   {  2,  4,  2,  4},      //スピード
+                                                                   {  2,  4,  2,  4}};     //耐久
 
         //チャージ弾の威力                                            Lv1 Lv2 Lv3  Lv4
-        public static readonly int[,] CHARGE_BULLET = new int[4, 4] {{ 7, 12, 100, 100},        //バランス
-                                                                     { 7, 12, 100, 100},        //パワー
-                                                                     { 7, 12, 100, 100},        //スピード
-                                                                     { 7, 12, 100, 100}};       //耐久
+        public static readonly int[,] CHARGE_BULLET = new int[4, 4] {{  6, 12,  6, 12},        //バランス
+                                                                     { 12, 24, 12, 24},        //パワー
+                                                                     {  3,  6,  3,  6},        //スピード
+                                                                     {  9, 12,  7, 12}};       //耐久
 
         public enum BULLET_TYPE { AUTO_SHOOT, CHARGE_SHOOT }
         //public BULLET_TYPE bullet_type;
@@ -67,8 +67,8 @@ namespace Shooting
             LazerFlg = false;
             ChargeSound = GetComponent<AudioSource>();
             iNowBulletLevel =
-            iNowChar =
             icount = 0;
+            iNowChar = 2;
         }
 
         void Update()

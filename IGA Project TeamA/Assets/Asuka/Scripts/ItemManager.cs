@@ -23,7 +23,7 @@ namespace ItemMgr
         {
             if (score.ScoreNumber.ScorePlusFlg)
             {
-                iRandItem = Random.Range(0, 3);
+                iRandItem = Random.Range(0, 1);
                 if (iRandItem <= 1)
                 {
                     GameObject.Instantiate(PrefabItems[iRandItem], transform.position, Quaternion.identity);
