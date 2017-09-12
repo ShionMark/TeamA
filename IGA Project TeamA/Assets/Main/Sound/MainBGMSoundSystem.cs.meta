@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 982a186a43d3aeb47b66efbbe8e09ed1
+timeCreated: 1505099767
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - Stage01_BGM: {fileID: 8300000, guid: c0467df88ec1abb4988aab282a16cac8, type: 3}
+  - Stage02_BGM: {fileID: 8300000, guid: b449d63fd5a576a43a0bf25de3b233f8, type: 3}
+  - Stage03_BGM: {fileID: 8300000, guid: 961878cf821482c40960971ce1bd807c, type: 3}
+  - Stage04_BGM: {fileID: 8300000, guid: a13153b67a320e444a5acb75558a4764, type: 3}
+  - Stage05_BGM: {fileID: 8300000, guid: 3c863ae0fc1c42b4ca5283e2cee464fa, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

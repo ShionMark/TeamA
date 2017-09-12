@@ -11,7 +11,7 @@ namespace ItemMgr
         private static int iMyPower, iMyHeart;//弾の威力 : 残基
         public static int iRandItem;
         public GameObject[] PrefabItems;
-
+        public int kakuritu;
         void Start()
         {
             iMyPower =
@@ -23,7 +23,7 @@ namespace ItemMgr
         {
             if (score.ScoreNumber.ScorePlusFlg)
             {
-                iRandItem = Random.Range(0, 1);
+                iRandItem = Random.Range(0, kakuritu);
                 if (iRandItem <= 1)
                 {
                     GameObject.Instantiate(PrefabItems[iRandItem], transform.position, Quaternion.identity);
@@ -40,11 +40,11 @@ namespace ItemMgr
             switch (iRandItem)
             {
                 case 0:
-                    //if (iMyPower <= 6)
-                    //{
-                    iMyPower++;
-                    //   Shooting_2.iNowBulletLevel = iMyPower / 2;
-                    // }
+                    if (iMyPower <= 6)
+                    {
+                        iMyPower++;
+                       Shooting_2.iNowBulletLevel = iMyPower / 2;
+                    }
                     break;
                 case 1:
                     iMyHeart++;

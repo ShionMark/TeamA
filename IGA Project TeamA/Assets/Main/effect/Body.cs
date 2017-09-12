@@ -40,6 +40,7 @@ namespace PM
                     Gage2.GageController._hp += 20; 
                     StageMove.BoxScript.ugoku = false;      //ステージを逆にスライドさせる。
                     PM.PlayerMove.PMP = true;
+                    
                     EBB = false;
                 }
             }

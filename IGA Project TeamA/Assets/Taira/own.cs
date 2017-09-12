@@ -16,10 +16,10 @@ public class own : MonoBehaviour {
     //オブジェクトが衝突したとき
     void OnCollisionEnter(Collision coll)
     {
-        if (coll.gameObject.tag == "EnemyBullet")
+        if (coll.gameObject.CompareTag("EnemyBullet") || coll.gameObject.CompareTag("MasterSpark"))
         {
-            PlayerHp.playerHp -= 1.0f;
-            Destroy(coll.gameObject);
+            
+
         }
     }
 }
