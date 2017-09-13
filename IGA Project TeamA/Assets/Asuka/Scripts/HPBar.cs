@@ -16,7 +16,7 @@ namespace Asuka
         const int iMAXBAR = 1;
         const int iMINBAR = 0;
 
-        public GameObject FuelBarGreen, FuelBarRed;
+        public static GameObject FuelBarGreen, FuelBarRed;
 
         public static float fRecobar;
         public static bool bdamage, brecove;
@@ -24,6 +24,8 @@ namespace Asuka
         // Use this for initialization
         void Start()
         {
+            FuelBarGreen = GameObject.Find("HPBARGREEN");
+            FuelBarRed = GameObject.Find("HPBARRED");
             bdamage = false;
             brecove = false;
         }
@@ -71,7 +73,7 @@ namespace Asuka
 
         }
 
-        void DAMAGE()
+        public static void DAMAGE()
         {
             if (FuelBarGreen.transform.localScale.x > 0)
             {
@@ -80,7 +82,7 @@ namespace Asuka
             }
         }
 
-        void RECO()
+        public static void RECO()
         {
             if (FuelBarGreen.transform.localScale.x > 0 && FuelBarGreen.transform.localScale.x <= 1)
             {

@@ -25,7 +25,7 @@ namespace ItemMgr
             if (bSpawnItemFlg)
             {
                 bSpawnItemFlg = false;
-                iRandItem = Random.Range(0, iProb);
+                iRandItem = 1;//Random.Range(0, iProb);
                 if (iRandItem <= 1) GameObject.Instantiate(PrefabItems[iRandItem], transform.position, Quaternion.identity);
             }
         }
@@ -41,8 +41,7 @@ namespace ItemMgr
                     }
                     break;
                 case 1:
-                   // Asuka.HPBar.fRecobar = (Asuka.HPBar.FuelBarGreen.transform.localScale.x <= 1 - Asuka.HPBar.RECOBAR1) ? Asuka.HPBar.FuelBarGreen.transform.localScale.x + Asuka.HPBar.RECOBAR1 : 1.0f;
-                    Asuka.HPBar.brecove = true;
+                    Asuka.HPBar.RECO();
                     break;
             }
         }
