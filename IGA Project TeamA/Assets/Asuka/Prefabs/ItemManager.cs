@@ -8,30 +8,25 @@ namespace ItemMgr
 {
     public class ItemManager : MonoBehaviour
     {
-        private static int iMyPower, iMyHeart;//弾の威力 : 残基
+        private static int iMyPower;//弾の威力
         public static int iRandItem;
+        public static bool bSpawnItemFlg;
         public GameObject[] PrefabItems;
-        public int kakuritu;
+        public int iProb;
         void Start()
         {
-            iMyPower =
-            iMyHeart = 0;
+            bSpawnItemFlg = false;
+            iMyPower = 0;
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (score.ScoreNumber.ScorePlusFlg)
+            if (bSpawnItemFlg)
             {
-                iRandItem = Random.Range(0, kakuritu);
-                if (iRandItem <= 1)
-                {
-                    GameObject.Instantiate(PrefabItems[iRandItem], transform.position, Quaternion.identity);
-                }
-                else
-                {
-                    Debug.Log("NO ITEMS");
-                }
+                bSpawnItemFlg = false;
+                iRandItem = Random.Range(0, iProb);
+                if (iRandItem <= 1) GameObject.Instantiate(PrefabItems[iRandItem], transform.position, Quaternion.identity);
             }
         }
 
@@ -42,17 +37,14 @@ namespace ItemMgr
                 case 0:
                     if (iMyPower <= 6)
                     {
-                        iMyPower++;
-                       Shooting_2.iNowBulletLevel = iMyPower / 2;
+                        Shooting_2.iNowBulletLevel = ++iMyPower / 2;
                     }
                     break;
                 case 1:
-                    iMyHeart++;
+                   // Asuka.HPBar.fRecobar = (Asuka.HPBar.FuelBarGreen.transform.localScale.x <= 1 - Asuka.HPBar.RECOBAR1) ? Asuka.HPBar.FuelBarGreen.transform.localScale.x + Asuka.HPBar.RECOBAR1 : 1.0f;
+                    Asuka.HPBar.brecove = true;
                     break;
             }
-
-            Debug.Log("パワー" + iMyPower);
-            Debug.Log("残基" + iMyHeart);
         }
     }
 }

@@ -18,8 +18,9 @@ public class own_02: MonoBehaviour {
     {
         if (coll.gameObject.CompareTag("EnemyBullet") || coll.gameObject.CompareTag("MasterSpark"))
         {
-
-
+            //Asuka.HPBar.FuelBarGreen.transform.localScale = (Asuka.HPBar.FuelBarGreen.transform.localScale.x >= Asuka.HPBar.DAMAGE1) ? 
+             //   Asuka.HPBar.FuelBarGreen.transform.localScale -= new Vector3(Asuka.HPBar.DAMAGE1, 0.0f, 0.0f) : new Vector3(1.0f, 1.0f, 1.0f);
+            Asuka.HPBar.bdamage = true;
         }
     }
 }

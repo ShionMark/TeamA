@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Gage1;
-using Gage2;
+
 
 namespace PM
 {
@@ -36,8 +35,8 @@ namespace PM
                 if (!eb.isPlaying)
                 {
 
-                    Gage1.HPcontroller._hp += 20;
-                    Gage2.GageController._hp += 20; 
+                //    Gage1.HPcontroller._hp += 20;
+                  //  Gage2.GageController._hp += 20; 
                     StageMove.BoxScript.ugoku = false;      //ステージを逆にスライドさせる。
                     PM.PlayerMove.PMP = true;
                     

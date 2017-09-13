@@ -5,7 +5,7 @@ using enemys;
 using StageMove;
 using PM;
 using Sound;
-using score;
+using ItemMgr;
 using Asuka;
 using StageMgr;
 
@@ -49,8 +49,7 @@ public class enemy_02_Script_1 : MonoBehaviour
             enemy_02_BodyScript_1.e2_HP = ENEMY02_HP;
             enemy_02_weakness_01_1.e2_Weak01HP = ENEMY02_WEAK01_HP;
             enemy_02_weakness_02_1.e2_Weak02HP = ENEMY02_WEAK02_HP;
-            
-            score.ScoreNumber.ScorePlusFlg = true;
+            ItemManager.bSpawnItemFlg = true;
             enemys.SpawnPoint_Behind.enemy[0].SetActive(false);
             PM.Body.EB = true;
             StageManager.bCreateEnemyFlg = true;
