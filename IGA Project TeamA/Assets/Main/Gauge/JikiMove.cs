@@ -12,7 +12,10 @@ namespace JikiUI
         void Update()
         {
 
+            if (Input.GetKeyDown(KeyCode.Alpha3)) this.gameObject.transform.position += new Vector3(5.0f, 0.0f, 0.0f); //ふえりゅ（3キー)
+
             JikiPosition = this.transform.localPosition;
+
             if (StageManager.aikonMoveFlg == false)//通常
             {
                 if (this.gameObject.transform.position.x > -12)
