@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using enemys;
-using score;
+using ItemMgr;
 using StageMove;
 using PM;
 using Sound;
@@ -45,7 +45,7 @@ public class enemy_03_Script_1 : MonoBehaviour
             enemy_03_BodyScript_1.e3_HP = ENEMY03_HP;
             enemy_03_weakness_01_1.e3_Weak01HP = ENEMY03_WEAK01_HP;
             enemy_03_weakness_02_1.e3_Weak02HP = ENEMY03_WEAK02_HP;
-            score.ScoreNumber.ScorePlusFlg = true;
+            ItemManager.bSpawnItemFlg = true;
             enemys.SpawnPoint_Behind.enemy[1].SetActive(false);
             PM.Body.EB = true;
             StageManager.bCreateEnemyFlg = true;

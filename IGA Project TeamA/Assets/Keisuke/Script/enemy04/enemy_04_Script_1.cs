@@ -4,7 +4,7 @@ using UnityEngine;
 using enemys;
 using PM;
 using Sound;
-using score;
+using ItemMgr;
 using Asuka;
 using StageMgr;
 
@@ -32,7 +32,7 @@ public class enemy_04_Script_1 : MonoBehaviour
             score.ScoreNumber.ScorePlusFlg = true;
             enemys.SpawnPoint_Behind.enemy[2].SetActive(false);
             PM.Body.EB = true;
-            StageManager.bCreateEnemyFlg = true;
+            ItemManager.bSpawnItemFlg = true;
             Sound.SoundSyastem.SoundOn = 5;     //効果音の番号
             // PM.PlayerMove.PMP = true;
             //enemys.SpawnPoint_Behind.EnemyGenerationFlg = true;  //敵沸処理

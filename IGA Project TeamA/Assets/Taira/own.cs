@@ -18,6 +18,7 @@ public class own : MonoBehaviour {
     {
         switch(coll.gameObject.tag)
         {
+<<<<<<< HEAD
             case ("EnemyBullet"):
 
                 break;
@@ -29,6 +30,9 @@ public class own : MonoBehaviour {
         //{
             
 
+=======
+            Asuka.HPBar.DAMAGE();
+>>>>>>> master
         }
     }
 }

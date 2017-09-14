@@ -9,8 +9,6 @@ namespace Asuka
 {
     public class Title : MonoBehaviour
     {
-        public string text = "Main";
-
         const int HelpStorage = 1100;
         public Button PlayButton, HelpButton, CHelpButton, QuitButton;
         public GameObject HelpScene;
@@ -49,7 +47,7 @@ namespace Asuka
         void StartOnClick()
         {
             TSound.TitleSoundManager.SFlg = true;
-            SceneManager.LoadScene(text);
+            SceneManager.LoadScene("SelectScene");
         }
         void HelpOnClick()
         {

@@ -18,8 +18,7 @@ public class own_02: MonoBehaviour {
     {
         if (coll.gameObject.CompareTag("EnemyBullet") || coll.gameObject.CompareTag("MasterSpark"))
         {
-
-
+            Asuka.HPBar.DAMAGE();
         }
     }
 }

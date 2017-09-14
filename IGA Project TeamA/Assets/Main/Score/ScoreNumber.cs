@@ -32,6 +32,7 @@ namespace score
             ScoreNumber01[Num01].SetActive(true);
             ScoreNumber02[Num02].SetActive(true);
             ScoreNumber03[Num03].SetActive(true);
+
             if (ScorePlusFlg)
             {
                 score++;

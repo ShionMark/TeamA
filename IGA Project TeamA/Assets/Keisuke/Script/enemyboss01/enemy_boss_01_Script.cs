@@ -4,7 +4,7 @@ using UnityEngine;
 using enemys;
 using PM;
 using Sound;
-using score;
+using ItemMgr;
 using Asuka;
 using StageMgr;
 
@@ -29,7 +29,7 @@ public class enemy_boss_01_Script : MonoBehaviour
             enemy_boss_01_BodyScript.eb_1_HP = ENEMY_BOSS_01_HP;
 
             Asuka.FuelBar2.bRecoFlg = true;
-            score.ScoreNumber.ScorePlusFlg = true;
+            ItemManager.bSpawnItemFlg = true;
             enemys.SpawnPoint_Behind.enemy[3].SetActive(false);
             PM.Body.EB = true;
             StageManager.IntervalType = StageManager.INTERVAL_TYPE.INTERVAL_CLEAR;

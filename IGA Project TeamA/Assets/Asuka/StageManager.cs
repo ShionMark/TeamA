@@ -43,7 +43,7 @@ namespace StageMgr
             Button EndButton = IntervalEndButton.GetComponent<Button>();//スタート(ポーズ中）
             EndButton.onClick.AddListener(EndButtonOnClick);
 
-            iNowStage =
+            iNowStage = SelectManager.SelectMgr.iSelectStage;
             iIntervalCount = 0;
 
             ButtonFlg = false;

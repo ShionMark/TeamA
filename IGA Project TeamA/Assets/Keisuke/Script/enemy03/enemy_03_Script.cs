@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using enemys;
-using score;
+using ItemMgr;
 using StageMove;
 using PM;
 using Sound;
@@ -42,7 +42,7 @@ public class enemy_03_Script : MonoBehaviour
             enemy_03_BodyScript.e3_HP = 15;
             enemy_03_weakness_01.e3_Weak01HP = 5;
             enemy_03_weakness_02.e3_Weak02HP = 5;
-            score.ScoreNumber.ScorePlusFlg = true;
+            ItemManager.bSpawnItemFlg = true;
             enemys.SpawnPoint_Behind.enemy[1].SetActive(false);
             PM.Body.EB = true;
             Sound.SoundSyastem.SoundOn = 5;     //効果音の番号

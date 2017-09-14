@@ -66,8 +66,8 @@ namespace Shooting
         {
             LazerFlg = false;
             ChargeSound = GetComponent<AudioSource>();
+            iNowChar = SelectManager.SelectMgr.iSelectJiki;
             iNowBulletLevel =
-            iNowChar =
             icount = 0;
         }
 
