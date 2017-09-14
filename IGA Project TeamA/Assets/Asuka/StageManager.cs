@@ -12,9 +12,9 @@ namespace StageMgr
 {
     public class StageManager : MonoBehaviour
     {
-        private const int START_INTERVAL_TIME = 380;
-        private const int CLEAR_INTERVAL_TIME = 380;
-        private const int CREATE_ENEMY_TIME = 380;
+        private const int START_INTERVAL_TIME = 180;
+        private const int CLEAR_INTERVAL_TIME = 180;
+        private const int CREATE_ENEMY_TIME = 180;
 
         public Button IntervalNextButton, IntervalEndButton;
         public GameObject IntervalBack, IntervalClearText, IntervalStartText, IntervalButtons;

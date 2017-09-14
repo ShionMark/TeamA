@@ -10,7 +10,7 @@ using StageMgr;
 
 public class enemy_boss_01_Script : MonoBehaviour
 {
-    public const int ENEMY_BOSS_01_HP = 100;
+    public const int ENEMY_BOSS_01_HP = 1000;
 
     // Use this for initialization
     void Start()
@@ -22,6 +22,7 @@ public class enemy_boss_01_Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        BossMove.MoveEnemyBoss.Move_Pattern = 1;    //移動パターン
         //エネミーボス01のHPがなくなったときの処理
         if (enemy_boss_01_BodyScript.eb_1_HP <= 0)
         {

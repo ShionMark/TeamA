@@ -45,7 +45,7 @@ namespace Move
                 pattern = Random.Range(0, 5);
                 patternFlg = false;
             }
-           transform.Rotate(new Vector3(0, 0, RollSpeed));
+         //  transform.Rotate(new Vector3(0, 0, RollSpeed));
             switch (pattern)
             {
                 case 0://円移動

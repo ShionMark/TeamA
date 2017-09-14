@@ -16,8 +16,17 @@ public class own : MonoBehaviour {
     //オブジェクトが衝突したとき
     void OnCollisionEnter(Collision coll)
     {
-        if (coll.gameObject.CompareTag("EnemyBullet") || coll.gameObject.CompareTag("MasterSpark"))
+        switch(coll.gameObject.tag)
         {
+            case ("EnemyBullet"):
+
+                break;
+
+            case ("MasterSpark"):
+
+                break;
+        //if (coll.gameObject.CompareTag("EnemyBullet") || coll.gameObject.CompareTag("MasterSpark"))
+        //{
             
 
         }

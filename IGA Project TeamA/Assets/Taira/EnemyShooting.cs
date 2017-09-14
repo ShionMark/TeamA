@@ -15,55 +15,147 @@ namespace Taira
         public Transform PosL;
         public Transform PosU;
         public Transform PosD;
-        public Transform Mpos;
 
-        public GameObject obj;
+        public GameObject Masupa_D;
+        public GameObject Masupa_U;
+        public GameObject Masupa_L;
+        public GameObject Masupa_R;
+        public float Masupa_WaitTime = 0f;
+        float Elapsedtime = 0f;
+
+
         ParticleSystem particle;
-        //発射パターン
         public static int pattern = 0;
 
         public float speed;
-        float time = 0;
+        float Shoot_time = 0;
         public float interval = 1f;
-
+        public int ShootingPattern; //シューティングパターン
 
         // Use this for initialization
         void Start()
         {
-            //particle.Stop();
         }
 
         // Update is called once per frame
         void Update()
         {
-            time += Time.deltaTime;
-            if (time > interval)
+            switch (ShootingPattern)
             {
-                
-                switch (pattern)
-                {
-                    case 0:
+                case 1:
+
+
+                    if (Shoot_time > interval)
+                    {
                         ShotL();
                         ShotR();
-                        pattern = 1;
-                        break;
-                    case 1:
                         ShotU();
                         ShotD();
-                        pattern = 0;
-                        break;
-                    case 2:
-                        MaSpa();
-                        pattern = 3;
-                        break;
-                    case 3:
-                        MaSpa();
-                        pattern = 0;
-                        break;
-                }
-                time = 0;
-                
+                        Shoot_time = 0;
+                    }
+                    else
+                    {
+                        Shoot_time += Time.deltaTime;
+                    }
+
+                    break;
+
+                case 2:
+
+                    if (Shoot_time > interval)
+                    {
+                        ShotL();
+                        ShotR();
+ 
+                        Shoot_time = 0;
+                    }
+                    else
+                    {
+                        Shoot_time += Time.deltaTime;
+                    }
+
+                    break;
+
+                case 3:
+
+                    if (Shoot_time > interval)
+                    {
+                        ShotD();
+                        ShotU();
+
+                        Shoot_time = 0;
+                    }
+                    else
+                    {
+                        Shoot_time += Time.deltaTime;
+                    }
+
+                    break;
+                case 4:
+
+
+                    if (Shoot_time > interval)
+                    {
+                        ShotL();
+                        ShotR();
+                        ShotU();
+                        ShotD();
+                        Shoot_time = 0;
+                    }
+                    else
+                    {
+                        Shoot_time += Time.deltaTime;
+                    }
+
+                    if (Elapsedtime >= Masupa_WaitTime)
+                    {
+
+                        MaSpa_D();
+                        MaSpa_U();
+                        MaSpa_L();
+                        MaSpa_R();
+
+                        Elapsedtime = 0;
+                    }
+                    else
+                    {
+                        Elapsedtime += Time.deltaTime;
+                    }
+                    break;
+
+                case 5:
+
+
+                    if (Shoot_time > interval)
+                    {
+                        ShotL();
+                        ShotR();
+                        ShotU();
+                       
+                        Shoot_time = 0;
+                    }
+                    else
+                    {
+                        Shoot_time += Time.deltaTime;
+                    }
+
+                    if (Elapsedtime >= Masupa_WaitTime)
+                    {
+
+                        MaSpa_U();
+                        MaSpa_L();
+                        MaSpa_R();
+
+                        Elapsedtime = 0;
+                    }
+                    else
+                    {
+                        Elapsedtime += Time.deltaTime;
+                    }
+                    break;
+
             }
+
         }
 
         void ShotL()
@@ -117,23 +209,38 @@ namespace Taira
             //弾丸の位置の調整
             bullets.transform.position = PosD.position;
         }
-        void MaSpa()
+        void MaSpa_D()
         {
-            if (pattern == 2)
-            {
-                obj = GameObject.Find("MasterSpark");
-                particle = obj.GetComponent<ParticleSystem>();
-                particle.transform.position = Mpos.position;
-                // ここで Particle System を開始します.
-                particle.Play();
-            }
-            else
-            {
-                obj = GameObject.Find("MasterSpark");
-                particle = obj.GetComponent<ParticleSystem>();
-                // ここで Particle System を開始します.
-                particle.Stop();
-            }
+            particle = Masupa_D.GetComponent<ParticleSystem>();
+            particle.transform.position = PosD.position;
+            particle.Play();
+
         }
+
+        void MaSpa_U()
+        {
+
+            particle = Masupa_U.GetComponent<ParticleSystem>();
+            particle.transform.position = PosU.position;
+            particle.Play();
+        }
+
+        void MaSpa_L()
+        {
+
+            particle = Masupa_L.GetComponent<ParticleSystem>();
+            particle.transform.position = PosL.position;
+            particle.Play();
+        }
+
+        void MaSpa_R()
+        {
+
+            particle = Masupa_R.GetComponent<ParticleSystem>();
+            particle.transform.position = PosR.position;
+            particle.Play();
+        }
+
+
     }
 }

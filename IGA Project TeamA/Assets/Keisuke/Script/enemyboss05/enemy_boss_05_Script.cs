@@ -23,6 +23,7 @@ public class enemy_boss_05_Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        BossMove.MoveEnemyBoss.Move_Pattern = 5;
         //エネミーボス01のHPがなくなったときの処理
         if (enemy_boss_05_BodyScript.eb_5_HP <= 0)
         {
