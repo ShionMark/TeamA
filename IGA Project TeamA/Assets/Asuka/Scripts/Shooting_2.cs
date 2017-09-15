@@ -39,7 +39,7 @@ namespace Shooting
         //public BULLET_TYPE bullet_type;
 
         public GameObject bullet_auto, bullet_charge, razer_charge;
-        public GameObject bulletsmain, bulletssub;
+        private GameObject bulletsmain, bulletssub;
 
         public static GameObject b_main, b_sub;
         // 弾丸発射点
@@ -73,7 +73,7 @@ namespace Shooting
 
         void Update()
         {
-            if (bPause == false)
+            if (!bPause)
             {
                 if (icount != COUNTMAX[iNowChar, iNowBulletLevel] && PM.ChargeShot.CS == false) icount++;
 

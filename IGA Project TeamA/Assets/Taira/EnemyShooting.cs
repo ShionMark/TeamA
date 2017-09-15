@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Move;
-
+using Shooting;
 namespace Taira
 {
     public class EnemyShooting : MonoBehaviour
@@ -40,122 +40,124 @@ namespace Taira
         // Update is called once per frame
         void Update()
         {
-            switch (ShootingPattern)
+            if (!Shooting.Shooting_2.bPause)
             {
-                case 1:
+                switch (ShootingPattern)
+                {
+                    case 1:
 
 
-                    if (Shoot_time > interval)
-                    {
-                        ShotL();
-                        ShotR();
-                        ShotU();
-                        ShotD();
-                        Shoot_time = 0;
-                    }
-                    else
-                    {
-                        Shoot_time += Time.deltaTime;
-                    }
+                        if (Shoot_time > interval)
+                        {
+                            ShotL();
+                            ShotR();
+                            ShotU();
+                            ShotD();
+                            Shoot_time = 0;
+                        }
+                        else
+                        {
+                            Shoot_time += Time.deltaTime;
+                        }
 
-                    break;
+                        break;
 
-                case 2:
+                    case 2:
 
-                    if (Shoot_time > interval)
-                    {
-                        ShotL();
-                        ShotR();
- 
-                        Shoot_time = 0;
-                    }
-                    else
-                    {
-                        Shoot_time += Time.deltaTime;
-                    }
+                        if (Shoot_time > interval)
+                        {
+                            ShotL();
+                            ShotR();
 
-                    break;
+                            Shoot_time = 0;
+                        }
+                        else
+                        {
+                            Shoot_time += Time.deltaTime;
+                        }
 
-                case 3:
+                        break;
 
-                    if (Shoot_time > interval)
-                    {
-                        ShotD();
-                        ShotU();
+                    case 3:
 
-                        Shoot_time = 0;
-                    }
-                    else
-                    {
-                        Shoot_time += Time.deltaTime;
-                    }
+                        if (Shoot_time > interval)
+                        {
+                            ShotD();
+                            ShotU();
 
-                    break;
-                case 4:
+                            Shoot_time = 0;
+                        }
+                        else
+                        {
+                            Shoot_time += Time.deltaTime;
+                        }
 
-
-                    if (Shoot_time > interval)
-                    {
-                        ShotL();
-                        ShotR();
-                        ShotU();
-                        ShotD();
-                        Shoot_time = 0;
-                    }
-                    else
-                    {
-                        Shoot_time += Time.deltaTime;
-                    }
-
-                    if (Elapsedtime >= Masupa_WaitTime)
-                    {
-
-                        MaSpa_D();
-                        MaSpa_U();
-                        MaSpa_L();
-                        MaSpa_R();
-
-                        Elapsedtime = 0;
-                    }
-                    else
-                    {
-                        Elapsedtime += Time.deltaTime;
-                    }
-                    break;
-
-                case 5:
+                        break;
+                    case 4:
 
 
-                    if (Shoot_time > interval)
-                    {
-                        ShotL();
-                        ShotR();
-                        ShotU();
-                       
-                        Shoot_time = 0;
-                    }
-                    else
-                    {
-                        Shoot_time += Time.deltaTime;
-                    }
+                        if (Shoot_time > interval)
+                        {
+                            ShotL();
+                            ShotR();
+                            ShotU();
+                            ShotD();
+                            Shoot_time = 0;
+                        }
+                        else
+                        {
+                            Shoot_time += Time.deltaTime;
+                        }
 
-                    if (Elapsedtime >= Masupa_WaitTime)
-                    {
+                        if (Elapsedtime >= Masupa_WaitTime)
+                        {
 
-                        MaSpa_U();
-                        MaSpa_L();
-                        MaSpa_R();
+                            MaSpa_D();
+                            MaSpa_U();
+                            MaSpa_L();
+                            MaSpa_R();
 
-                        Elapsedtime = 0;
-                    }
-                    else
-                    {
-                        Elapsedtime += Time.deltaTime;
-                    }
-                    break;
+                            Elapsedtime = 0;
+                        }
+                        else
+                        {
+                            Elapsedtime += Time.deltaTime;
+                        }
+                        break;
 
+                    case 5:
+
+
+                        if (Shoot_time > interval)
+                        {
+                            ShotL();
+                            ShotR();
+                            ShotU();
+
+                            Shoot_time = 0;
+                        }
+                        else
+                        {
+                            Shoot_time += Time.deltaTime;
+                        }
+
+                        if (Elapsedtime >= Masupa_WaitTime)
+                        {
+
+                            MaSpa_U();
+                            MaSpa_L();
+                            MaSpa_R();
+
+                            Elapsedtime = 0;
+                        }
+                        else
+                        {
+                            Elapsedtime += Time.deltaTime;
+                        }
+                        break;
+
+                }
             }
-
         }
 
         void ShotL()

@@ -11,7 +11,8 @@ namespace Asuka
     {
         private const float GBARANIME = 0.01f;//回復の上昇アニメ(数が小さいほど遅い)
         private const float RBARANIME = 0.01f;//ダメージの赤ゲージアニメ(数が小さいほど遅い)
-        public static readonly float DAMAGE1 = 0.15f;//ダメージ
+        public static readonly float[] DAMAGE1 = new float[2] { 0.05f, 0.01f };
+        public static int HitPattern = 0;
         public static readonly float RECOBAR1 = 0.30f;//回復量
         const int iMAXBAR = 1;
         const int iMINBAR = 0;
@@ -77,7 +78,7 @@ namespace Asuka
         {
             if (FuelBarGreen.transform.localScale.x > 0)
             {
-                FuelBarGreen.transform.localScale = (FuelBarGreen.transform.localScale.x >= DAMAGE1) ? FuelBarGreen.transform.localScale -= new Vector3(DAMAGE1, 0.0f, 0.0f) : new Vector3(iMINBAR, 1.0f, 1.0f);
+                FuelBarGreen.transform.localScale = (FuelBarGreen.transform.localScale.x >= DAMAGE1[HitPattern]) ? FuelBarGreen.transform.localScale -= new Vector3(DAMAGE1[HitPattern], 0.0f, 0.0f) : new Vector3(iMINBAR, 1.0f, 1.0f);
                 bdamage = true;
             }
         }

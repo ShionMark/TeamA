@@ -20,14 +20,14 @@ namespace JikiUI
             {
                 if (this.gameObject.transform.position.x > -12)
                 {
-                    this.gameObject.transform.position -= new Vector3(0.005f, 0.0f, 0.0f);
+                    this.gameObject.transform.position -= new Vector3(0.1f, 0.0f, 0.0f);
                 }
             }
             else//敵死亡
             {
-                if (this.gameObject.transform.position.x < 10)
+                if (this.gameObject.transform.position.x > -12)
                 {
-                    this.gameObject.transform.position += new Vector3(0.01f, 0.0f, 0.0f);
+                    this.gameObject.transform.position += new Vector3(1.0f, 0.0f, 0.0f);
 
                 }
             }
