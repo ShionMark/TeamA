@@ -11,7 +11,7 @@ namespace Asuka
     {
         private const float GBARANIME = 0.01f;//回復の上昇アニメ(数が小さいほど遅い)
         private const float RBARANIME = 0.01f;//ダメージの赤ゲージアニメ(数が小さいほど遅い)
-        public static readonly float[] DAMAGE1 = new float[2] { 0.05f, 0.01f };
+        public static readonly float[] DAMAGE1 = new float[2] { 0.01f, 0.05f };
         public static int HitPattern = 0;
         public static readonly float RECOBAR1 = 0.30f;//回復量
         const int iMAXBAR = 1;

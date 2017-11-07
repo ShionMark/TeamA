@@ -22,12 +22,11 @@ namespace Itsuki_ver1
       //オブジェクトが衝突したとき
         void OnCollisionEnter(Collision collisions)
         {
-            if (collisions.gameObject.tag != "Player" 
-                || this.gameObject.transform.position.x >= 100 
-                || this.gameObject.transform.position.x <= -100
-                || this.gameObject.transform.position.y >= 100
-                || this.gameObject.transform.position.y <= -100)
             Destroy(this.gameObject);
+            if (this.gameObject.transform.position.x >= 40
+                || this.gameObject.transform.position.x <= -40
+                || this.gameObject.transform.position.y >= 40
+                || this.gameObject.transform.position.y <= -40) Destroy(this.gameObject);
         }
     }
 }

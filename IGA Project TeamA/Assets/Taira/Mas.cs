@@ -2,23 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Taira;
-
 namespace Taira
 {
     public class Mas : MonoBehaviour
     {
+
+        void Start()
+        {
+            Taira.EnemyShooting.Masupa_D = this.gameObject;
+            this.gameObject.SetActive(false);
+        }
 
         void Update()
         {
 
         }
 
-        void OnTriggerEnter(Collider coll)
+        /*void OnParticleCollision(GameObject coll)
         {
-            if (coll.gameObject.CompareTag("Player") && Taira.EnemyShooting.pattern >= 2)
+            if (coll.gameObject.tag == "Player")
             {
-
+                Asuka.HPBar.HitPattern = 1;
             }
-        }
+        }*/
     }
 }

@@ -19,6 +19,11 @@ public class EnemyBullet : MonoBehaviour {
         {
             Destroy(coll.gameObject);
         }
-        Destroy(this.gameObject);
+
+        if (coll.gameObject.tag != "EnemyBullet" && coll.gameObject.tag != "MasterSpark")
+        {
+            Destroy(this.gameObject);
+        }
+        
     }
 }

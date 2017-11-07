@@ -33,6 +33,7 @@ public class enemy_04_Script_1 : MonoBehaviour
             enemys.SpawnPoint_Behind.enemy[2].SetActive(false);
             PM.Body.EB = true;
             ItemManager.bSpawnItemFlg = true;
+            StageManager.bCreateEnemyFlg = true;
             Sound.SoundSyastem.SoundOn = 5;     //効果音の番号
             // PM.PlayerMove.PMP = true;
             //enemys.SpawnPoint_Behind.EnemyGenerationFlg = true;  //敵沸処理
