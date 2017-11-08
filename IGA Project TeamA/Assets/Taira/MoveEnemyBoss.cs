@@ -15,7 +15,7 @@ namespace BossMove
         public float Boss04_RollSpeed = 0f;
         public float Boss05_RollSpeed = 0f;
         
-        public static int Move_Pattern = 5;      //動きのパターン
+        public static int Move_Pattern = 0;      //動きのパターン
         public bool m_xPlus = true;  // x 軸プラス方向に移動中か？
         public bool m_yPlus = true;  // y 軸プラス方向に移動中か？
         public bool Rote = false;   //trueで左回り。falseで右周りにBossが回転

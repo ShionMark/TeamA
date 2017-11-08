@@ -139,7 +139,7 @@ namespace StageMgr
                 iNowStage++;
                 Switching(1);
 
-                //SpawnPoint_Behind.SpawnEnemyCount =
+                JikiUI.JikiMove.JikiPosition.x = 130;
                 iIntervalCount = 0;
 
                 BoxScript.ugoku =

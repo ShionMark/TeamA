@@ -25,7 +25,7 @@ namespace ItemMgr
             if (bSpawnItemFlg)
             {
                 bSpawnItemFlg = false;
-                iRandItem = 1;//Random.Range(0, iProb);
+                iRandItem = Random.Range(0, iProb);
                 if (iRandItem <= 1) GameObject.Instantiate(PrefabItems[iRandItem], transform.position, Quaternion.identity);
             }
         }

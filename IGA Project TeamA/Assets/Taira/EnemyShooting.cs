@@ -16,12 +16,13 @@ namespace Taira
         public Transform PosU;
         public Transform PosD;
 
-        public GameObject Masupa_D;
-        public GameObject Masupa_U;
-        public GameObject Masupa_L;
-        public GameObject Masupa_R;
+        public static GameObject Masupa_D;
+        public static GameObject Masupa_U;
+        public static GameObject Masupa_L;
+        public static GameObject Masupa_R;
         public float Masupa_WaitTime = 0f;
         float Elapsedtime = 0f;
+       
 
 
         ParticleSystem particle;
@@ -35,11 +36,14 @@ namespace Taira
         // Use this for initialization
         void Start()
         {
+            
         }
 
         // Update is called once per frame
         void Update()
         {
+            
+
             if (!Shooting.Shooting_2.bPause)
             {
                 switch (ShootingPattern)
@@ -111,7 +115,10 @@ namespace Taira
 
                         if (Elapsedtime >= Masupa_WaitTime)
                         {
-
+                            /*Masupa_D.SetActive(true);
+                            Masupa_U.SetActive(true);
+                            Masupa_L.SetActive(true);
+                            Masupa_R.SetActive(true);*/
                             MaSpa_D();
                             MaSpa_U();
                             MaSpa_L();
@@ -130,6 +137,10 @@ namespace Taira
 
                         if (Shoot_time > interval)
                         {
+                            
+                            /*Masupa_U.SetActive(true);
+                            Masupa_L.SetActive(true);
+                            Masupa_R.SetActive(true);*/
                             ShotL();
                             ShotR();
                             ShotU();
@@ -143,7 +154,10 @@ namespace Taira
 
                         if (Elapsedtime >= Masupa_WaitTime)
                         {
-
+                           
+                           /* Masupa_U.SetActive(true);
+                            Masupa_L.SetActive(true);
+                            Masupa_R.SetActive(true);*/
                             MaSpa_U();
                             MaSpa_L();
                             MaSpa_R();
@@ -210,6 +224,7 @@ namespace Taira
             bullets.GetComponent<Rigidbody>().AddForce(-(force));
             //弾丸の位置の調整
             bullets.transform.position = PosD.position;
+            
         }
         void MaSpa_D()
         {
@@ -217,6 +232,7 @@ namespace Taira
             particle.transform.position = PosD.position;
             particle.Play();
 
+           
         }
 
         void MaSpa_U()
@@ -225,6 +241,7 @@ namespace Taira
             particle = Masupa_U.GetComponent<ParticleSystem>();
             particle.transform.position = PosU.position;
             particle.Play();
+
         }
 
         void MaSpa_L()
@@ -233,6 +250,8 @@ namespace Taira
             particle = Masupa_L.GetComponent<ParticleSystem>();
             particle.transform.position = PosL.position;
             particle.Play();
+
+           
         }
 
         void MaSpa_R()
@@ -241,6 +260,8 @@ namespace Taira
             particle = Masupa_R.GetComponent<ParticleSystem>();
             particle.transform.position = PosR.position;
             particle.Play();
+
+            
         }
 
 

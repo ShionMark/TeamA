@@ -15,9 +15,13 @@ public class EBullet : MonoBehaviour {
 	void Update () {
         if (!GetComponent<Renderer>().isVisible){
             Destroy(this.gameObject);
-        }else if(this.gameObject.transform.position.x > 900 || this.gameObject.transform.position.x < -900){
+        }
+        else if (this.gameObject.transform.position.x > 40 || this.gameObject.transform.position.x < -40)
+        {
             Destroy(this.gameObject);
-        }else if(this.gameObject.transform.position.y > 500 || this.gameObject.transform.position.y < -500){
+        }
+        else if (this.gameObject.transform.position.y > 40 || this.gameObject.transform.position.y < -40)
+        {
             Destroy(this.gameObject);
         }
 	}

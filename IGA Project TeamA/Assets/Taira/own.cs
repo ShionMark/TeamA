@@ -14,9 +14,9 @@ public class own : MonoBehaviour {
 		
 	}
     //オブジェクトが衝突したとき
-    void OnCollisionEnter(Collision coll)
+    void OnTriggerEnter(Collider coll)
     {
-
+       
        // if (coll.gameObject.CompareTag("EnemyBullet") || coll.gameObject.CompareTag("MasterSpark"))
         switch(coll.gameObject.tag)
         {
@@ -25,6 +25,7 @@ public class own : MonoBehaviour {
                 Asuka.HPBar.DAMAGE();
                 break;
             case ("MasterSpark"):
+                
                 Asuka.HPBar.HitPattern = 1;
                 Asuka.HPBar.DAMAGE();
                 break;

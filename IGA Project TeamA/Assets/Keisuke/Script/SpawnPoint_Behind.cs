@@ -31,7 +31,7 @@ namespace enemys
             {
                 if (JikiMove.JikiPosition.x <= 260)
                 {
-                    i = Random.Range(0, enemyMAX - 5);
+                    i = Random.Range(0, 2);
                 }
                 else
                 {
